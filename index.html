@@ -577,6 +577,7 @@
         <span class="pg-zoomval" id="pg-zoomval">100%</span>
         <button class="pg-btn" id="pg-zoom-in" aria-label="확대">&#43;</button>
         <button class="pg-btn" id="pg-fit"><span class="txt">화면맞춤</span><span aria-hidden="true">&#8634;</span></button>
+        <a class="pg-btn" id="pg-pdf" href="#" target="_blank" rel="noopener" title="원본 PDF 열기 · 인쇄/다운로드" aria-label="원본 PDF 열기 (인쇄·다운로드)" style="display:none"><span class="txt">PDF</span><span aria-hidden="true">&#8599;</span></a>
         <button class="pg-btn" id="pg-print"><span class="txt">인쇄</span><span aria-hidden="true">&#128424;</span></button>
         <button class="pg-btn" id="pg-close" aria-label="닫기">&#10005;</button>
       </div>
@@ -664,6 +665,8 @@
   var IMG = {
     "wall":"img/guide-wall.webp",    "door":"img/guide-door.webp",    "furniture":"img/guide-furniture.webp",    "gloss":"img/guide-gloss.webp",    "primer":"img/guide-primer.webp",    "care":"img/guide-care.webp"
   };
+  // 원본 PDF (보관·배포용): 해당 가이드에서만 'PDF' 버튼 표시
+  var PDF = { "wall":"pdf/guide-wall.pdf", "door":"pdf/guide-door.pdf", "furniture":"pdf/guide-furniture.pdf" };
   var lb=document.getElementById('pg-lb'), img=document.getElementById('pg-img'),
       stage=document.getElementById('pg-stage'), zv=document.getElementById('pg-zoomval'),
       koEl=document.getElementById('pg-lb-ko'), enEl=document.getElementById('pg-lb-en');
@@ -675,6 +678,8 @@
     var id=ORDER[cur];
     img.src=IMG[id]; img.alt=META[id].ko;
     koEl.textContent=META[id].ko; enEl.textContent=META[id].en;
+    var pdfEl=document.getElementById('pg-pdf');
+    if(pdfEl){ if(PDF[id]){ pdfEl.href=PDF[id]; pdfEl.style.display=''; } else { pdfEl.style.display='none'; pdfEl.removeAttribute('href'); } }
     scale=1; computeBase(); apply(); stage.scrollTop=0; stage.scrollLeft=0;
   }
   function open(idx){ lb.classList.add('open'); document.body.style.overflow='hidden'; load(idx); }
