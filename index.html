@@ -406,18 +406,25 @@
   .pgr-btn:hover{background:rgba(255,255,255,.2)}
   .pgr-btn.hot{background:var(--orange);border-color:var(--orange)}
   .pgr-count{color:#e8e2d6;font-size:13px;font-weight:700;min-width:66px;text-align:center;font-variant-numeric:tabular-nums}
-  .pgr-body{display:grid;grid-template-columns:132px 1fr;min-height:520px}
-  .pgr-rail{background:rgba(0,0,0,.28);padding:12px;overflow-y:auto;max-height:640px;display:flex;flex-direction:column;gap:9px}
+  .pgr-body{display:grid;grid-template-columns:140px 1fr;height:min(78vh,780px);min-height:460px}
+  .pgr-rail{background:rgba(0,0,0,.28);padding:12px;height:100%;overflow-y:auto;display:flex;flex-direction:column;gap:9px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.3) transparent}
+  .pgr-rail::-webkit-scrollbar{width:8px}.pgr-rail::-webkit-scrollbar-thumb{background:rgba(255,255,255,.22);border-radius:8px}
   .pgr-thumb{position:relative;border:2px solid transparent;border-radius:7px;overflow:hidden;background:#fff;cursor:pointer;padding:0;flex-shrink:0;transition:.15s}
-  .pgr-thumb canvas{display:block;width:100%}
+  .pgr-thumb img{display:block;width:100%;height:auto}
   .pgr-thumb:hover{border-color:rgba(255,255,255,.45)}
-  .pgr-thumb.on{border-color:var(--orange)}
+  .pgr-thumb.on{border-color:var(--orange);box-shadow:0 0 0 2px rgba(226,87,30,.35)}
   .pgr-thumb i{position:absolute;left:0;bottom:0;font-style:normal;font-size:10px;font-weight:800;color:#fff;background:rgba(20,18,14,.78);padding:2px 6px;border-top-right-radius:6px}
-  .pgr-stage{overflow:auto;max-height:640px;padding:20px;display:flex;justify-content:center;align-items:flex-start;background:repeating-linear-gradient(45deg,rgba(255,255,255,.02) 0 12px,transparent 12px 24px)}
-  .pgr-stage canvas{background:#fff;border-radius:4px;box-shadow:0 12px 34px rgba(0,0,0,.42);max-width:100%;height:auto}
-  .pgr-stage.zoom canvas{max-width:none}
+  .pgr-stage{position:relative;height:100%;overflow:auto;padding:18px;display:flex;justify-content:center;align-items:center;background:repeating-linear-gradient(45deg,rgba(255,255,255,.02) 0 12px,transparent 12px 24px)}
+  .pgr-stage img{max-height:100%;width:auto;max-width:100%;object-fit:contain;background:#fff;border-radius:4px;box-shadow:0 14px 38px rgba(0,0,0,.45);cursor:zoom-in;display:block}
+  .pgr-stage::after{content:"클릭하면 크게 · 확대";position:absolute;right:14px;bottom:12px;font-size:11px;font-weight:700;letter-spacing:.02em;color:#efe9db;background:rgba(20,18,14,.62);padding:5px 11px;border-radius:20px;pointer-events:none;opacity:.9}
   .pgr-load{color:rgba(255,255,255,.6);font-size:13px;padding:40px 0}
-  @media(max-width:860px){.pgr-body{grid-template-columns:1fr}.pgr-rail{flex-direction:row;max-height:none;overflow-x:auto}.pgr-thumb{width:86px}}
+  @media(max-width:860px){
+    .pgr-body{grid-template-columns:1fr;height:auto}
+    .pgr-rail{flex-direction:row;height:auto;overflow-x:auto;overflow-y:hidden}
+    .pgr-thumb{width:88px;flex-shrink:0}
+    .pgr-stage{height:auto;max-height:64vh;padding:14px}
+    .pgr-stage::after{display:none}
+  }
   .pg-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
   .pg-chip{border:1.5px solid var(--orange);background:var(--card);color:var(--ink-soft);font-family:inherit;font-size:13.5px;font-weight:700;padding:8px 16px;border-radius:30px;cursor:pointer;transition:.15s}
   .pg-chip:hover{border-color:var(--ink)}
@@ -453,24 +460,25 @@
   .pg-arrow:hover{background:var(--orange)}
   .pg-arrow.prev{left:12px}.pg-arrow.next{right:12px}
   .pg-hint{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);color:#cfc9bf;font-size:12px;background:rgba(0,0,0,.4);padding:6px 14px;border-radius:20px;pointer-events:none}
+  /* 인쇄용 전체 면 컨테이너 (화면에서는 숨김) */
+  #pgr-print-box{display:none}
   @media print{
-    body>*{display:none!important}
-    body>#painting-guide{display:block!important}
-    body.pgr-printing #painting-guide>.wrap{display:block!important}
-    body.pgr-printing #painting-guide .sec-head,
-    body.pgr-printing #painting-guide .pg-filters,
-    body.pgr-printing #painting-guide .pg-grid,
-    body.pgr-printing .pgr-bar,body.pgr-printing .pgr-rail{display:none!important}
-    body.pgr-printing .pgr{background:#fff!important;box-shadow:none!important;border-radius:0!important}
-    body.pgr-printing .pgr-body{display:block!important;min-height:0!important}
-    body.pgr-printing .pgr-stage{max-height:none!important;overflow:visible!important;padding:0!important;background:none!important}
-    body.pgr-printing .pgr-stage canvas{width:100%!important;height:auto!important;box-shadow:none!important;border-radius:0!important}
-    #painting-guide>.wrap,#painting-guide .pg-lb-bar,#painting-guide .pg-arrow,#painting-guide .pg-hint{display:none!important}
-    #painting-guide{background:#fff!important;border:0!important}
-    .pg-lb{position:static!important;display:block!important;background:#fff!important;inset:auto!important}
-    .pg-stage{overflow:visible!important;padding:0!important}
-    .pg-stage img{width:100%!important;box-shadow:none!important;border-radius:0!important}
-    @page{margin:8mm}
+    /* (A) 가이드 전문 '인쇄' → 전체 면 순서대로 */
+    body.pgr-printing>*{display:none!important}
+    body.pgr-printing #pgr-print-box{display:block!important}
+    #pgr-print-box img{display:block;width:100%;margin:0 auto;break-after:page;page-break-after:always}
+    #pgr-print-box img:last-child{break-after:auto;page-break-after:auto}
+    /* (B) 라이트박스 '인쇄' → 현재 열린 이미지 1장 */
+    body.lb-printing>*{display:none!important}
+    body.lb-printing #painting-guide{display:block!important}
+    body.lb-printing #painting-guide>.wrap{display:none!important}
+    body.lb-printing .pg-lb.open{position:static!important;display:block!important;background:#fff!important;inset:auto!important}
+    body.lb-printing .pg-lb.open .pg-lb-bar,
+    body.lb-printing .pg-lb.open .pg-arrow,
+    body.lb-printing .pg-lb.open .pg-hint{display:none!important}
+    body.lb-printing .pg-lb.open .pg-stage{overflow:visible!important;padding:0!important}
+    body.lb-printing .pg-lb.open .pg-stage img{width:100%!important;max-height:none!important;box-shadow:none!important;border-radius:0!important}
+    @page{margin:6mm}
   }
   @media(max-width:640px){
     .pg-lb-title small{display:none}
@@ -492,18 +500,18 @@
     
     <div class="pgr" id="pgr">
       <div class="pgr-bar">
-        <div class="pgr-title"><b>페인팅 가이드 전문</b><small>PAINTING GUIDE · 전체 24페이지</small></div>
+        <div class="pgr-title"><b>페인팅 가이드 전문</b><small id="pgr-sub">PAINTING GUIDE</small></div>
         <div class="pgr-tools">
           <button class="pgr-btn" id="pgr-prev" aria-label="이전 페이지">&#8249;</button>
-          <span class="pgr-count"><b id="pgr-cur">1</b> / <span id="pgr-tot">24</span></span>
+          <span class="pgr-count"><b id="pgr-cur">1</b> / <span id="pgr-tot">18</span></span>
           <button class="pgr-btn" id="pgr-next" aria-label="다음 페이지">&#8250;</button>
-          <button class="pgr-btn" id="pgr-zoom">확대</button>
-          <button class="pgr-btn hot" id="pgr-print">인쇄</button>
+          <button class="pgr-btn hot" id="pgr-zoom">확대</button>
+          <button class="pgr-btn" id="pgr-print">인쇄</button>
         </div>
       </div>
       <div class="pgr-body">
         <div class="pgr-rail" id="pgr-rail"></div>
-        <div class="pgr-stage" id="pgr-stage"><div class="pgr-load" id="pgr-load">가이드를 불러오는 중…</div><canvas id="pgr-canvas" style="display:none"></canvas></div>
+        <div class="pgr-stage" id="pgr-stage"><div class="pgr-load" id="pgr-load">가이드를 불러오는 중…</div><img id="pgr-img" alt="페인팅 가이드" style="display:none"></div>
       </div>
     </div>
     <div class="pg-filters" id="pg-filters">
@@ -587,75 +595,164 @@
     <div class="pg-stage" id="pg-stage"><img id="pg-img" alt=""></div>
     <div class="pg-hint">이미지를 클릭하면 확대 · 방향키 &#8592; &#8594; 로 이동 · ESC 닫기</div>
   </div>
+  <!-- fullscreen zoom viewer: 가이드 전문 -->
+  <div class="pg-lb" id="gv-lb" role="dialog" aria-modal="true" aria-label="페인팅 가이드 확대 뷰어">
+    <div class="pg-lb-bar">
+      <div class="pg-lb-title"><b>페인팅 가이드 전문</b><small>PAINTING GUIDE</small></div>
+      <div class="pg-lb-tools">
+        <span class="pg-zoomval" id="gv-cnt" style="min-width:62px">1 / 18</span>
+        <button class="pg-btn" id="gv-out" aria-label="축소">&#8722;</button>
+        <span class="pg-zoomval" id="gv-zval">100%</span>
+        <button class="pg-btn" id="gv-in" aria-label="확대">&#43;</button>
+        <button class="pg-btn" id="gv-fit"><span class="txt">화면맞춤</span><span aria-hidden="true">&#8634;</span></button>
+        <button class="pg-btn" id="gv-close" aria-label="닫기">&#10005;</button>
+      </div>
+    </div>
+    <button class="pg-arrow prev" id="gv-prev" aria-label="이전">&#8249;</button>
+    <button class="pg-arrow next" id="gv-next" aria-label="다음">&#8250;</button>
+    <div class="pg-stage" id="gv-stage"><img id="gv-img" alt=""></div>
+    <div class="pg-hint">이미지 클릭·휠로 확대 · 드래그로 이동 · 방향키 &#8592; &#8594; · ESC 닫기</div>
+  </div>
 </section>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script id="pgr-script">
 (function(){
-  var URLPDF='pdf/painting-guide.pdf';
-  var stage=document.getElementById('pgr-stage'), cv=document.getElementById('pgr-canvas'),
-      rail=document.getElementById('pgr-rail'), load=document.getElementById('pgr-load'),
-      curEl=document.getElementById('pgr-cur'), totEl=document.getElementById('pgr-tot');
-  var doc=null, cur=1, zoom=false, busy=false;
-  if(!window.pdfjsLib){ load.textContent='가이드 뷰어를 불러올 수 없습니다.'; return; }
-  pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  /* =========================================================================
+     페인팅 가이드 전문 — 이미지 기반 리더 (pdf.js 불필요, GitHub Pages 안정)
+     · 면 추가/수정은 아래 PAGES 배열만 바꾸면 됨. (예: 08~13면 추가 시 '08'..'13')
+     · 파일 규칙:  원본 img/guide-page-{번호}.webp  /  썸네일 img/guide-thumb-{번호}.webp
+     ========================================================================= */
+  var PAGES = ["01","02","03","04","05","06","07","14","15","16","17","18","19","20","21","22","23","24"];
+  function FULL(n){ return "img/guide-page-"+n+".webp"; }
+  function THUMB(n){ return "img/guide-thumb-"+n+".webp"; }
 
-  function dpr(){ return Math.min(window.devicePixelRatio||1, 2.5); }
+  var stage=document.getElementById('pgr-stage'),
+      img=document.getElementById('pgr-img'),
+      load=document.getElementById('pgr-load'),
+      rail=document.getElementById('pgr-rail'),
+      curEl=document.getElementById('pgr-cur'),
+      totEl=document.getElementById('pgr-tot'),
+      sub=document.getElementById('pgr-sub');
+  var idx=0;
+  totEl.textContent=PAGES.length;
+  if(sub) sub.textContent='PAINTING GUIDE · 총 '+PAGES.length+'면';
 
-  function draw(n){
-    if(!doc||busy) return; busy=true;
-    doc.getPage(n).then(function(p){
-      var avail=stage.clientWidth-40;
-      var base=p.getViewport({scale:1});
-      var css=(zoom?avail*1.9:avail);
-      var s=(css/base.width)*dpr();
-      var vp=p.getViewport({scale:s});
-      cv.width=vp.width; cv.height=vp.height;
-      cv.style.width=css+'px'; cv.style.height=(css*base.height/base.width)+'px';
-      return p.render({canvasContext:cv.getContext('2d'),viewport:vp}).promise;
-    }).then(function(){
-      cv.style.display='block'; load.style.display='none';
-      curEl.textContent=n; busy=false;
-      stage.scrollTop=0;
-      [].forEach.call(rail.children,function(t,i){ t.classList.toggle('on',i+1===n); });
-    }).catch(function(){ busy=false; });
-  }
-  function go(n){ if(!doc)return; cur=Math.min(doc.numPages,Math.max(1,n)); draw(cur); }
-
-  function buildRail(){
-    for(var i=1;i<=doc.numPages;i++)(function(i){
-      var b=document.createElement('button');
-      b.className='pgr-thumb'+(i===1?' on':''); b.type='button';
-      b.setAttribute('aria-label',i+'페이지');
-      var c=document.createElement('canvas'); b.appendChild(c);
-      var lab=document.createElement('i'); lab.textContent=i; b.appendChild(lab);
-      b.addEventListener('click',function(){ go(i); });
-      rail.appendChild(b);
-      doc.getPage(i).then(function(p){
-        var vp=p.getViewport({scale:1}), w=104*2, s=w/vp.width;
-        var v2=p.getViewport({scale:s});
-        c.width=v2.width; c.height=v2.height;
-        return p.render({canvasContext:c.getContext('2d'),viewport:v2}).promise;
-      });
-    })(i);
+  function show(i){
+    idx=(i+PAGES.length)%PAGES.length;
+    img.src=FULL(PAGES[idx]);
+    img.alt='페인팅 가이드 '+PAGES[idx]+'면';
+    img.style.display='block';
+    if(load) load.style.display='none';
+    curEl.textContent=idx+1;
+    stage.scrollTop=0;
+    [].forEach.call(rail.children,function(t,k){ t.classList.toggle('on',k===idx); });
+    var on=rail.children[idx]; if(on&&on.scrollIntoView) on.scrollIntoView({block:'nearest',inline:'nearest'});
   }
 
-  pdfjsLib.getDocument(URLPDF).promise.then(function(d){
-    doc=d; totEl.textContent=d.numPages; buildRail(); draw(1);
-  }).catch(function(){ load.textContent='가이드 파일을 불러올 수 없습니다.'; });
-
-  document.getElementById('pgr-prev').addEventListener('click',function(){ go(cur-1); });
-  document.getElementById('pgr-next').addEventListener('click',function(){ go(cur+1); });
-  document.getElementById('pgr-zoom').addEventListener('click',function(){
-    zoom=!zoom; stage.classList.toggle('zoom',zoom);
-    this.textContent=zoom?'화면맞춤':'확대'; this.classList.toggle('hot',zoom); draw(cur);
+  /* 썸네일 레일 */
+  PAGES.forEach(function(n,i){
+    var b=document.createElement('button');
+    b.type='button'; b.className='pgr-thumb'+(i===0?' on':'');
+    b.setAttribute('aria-label',(i+1)+'면 보기');
+    var im=document.createElement('img'); im.loading='lazy'; im.src=THUMB(n); im.alt='';
+    b.appendChild(im);
+    var lab=document.createElement('i'); lab.textContent=i+1; b.appendChild(lab);
+    b.addEventListener('click',function(){ show(i); });
+    rail.appendChild(b);
   });
+
+  document.getElementById('pgr-prev').addEventListener('click',function(){ show(idx-1); });
+  document.getElementById('pgr-next').addEventListener('click',function(){ show(idx+1); });
+
+  /* 스테이지 클릭·'확대' 버튼 → 전체화면 확대 뷰어 */
+  img.addEventListener('click',function(){ GV.open(idx); });
+  document.getElementById('pgr-zoom').addEventListener('click',function(){ GV.open(idx); });
+
+  /* 리더가 화면에 보일 때 방향키로 면 이동 (확대 뷰어가 닫혀있을 때만) */
+  document.addEventListener('keydown',function(e){
+    if(document.querySelector('.pg-lb.open')) return;
+    if(e.target && /^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName)) return;
+    var r=stage.getBoundingClientRect();
+    if(r.bottom<40||r.top>innerHeight-40) return;
+    if(e.key==='ArrowLeft'){ show(idx-1); }
+    else if(e.key==='ArrowRight'){ show(idx+1); }
+  });
+
+  /* 인쇄: 전체 면 순서대로 */
   document.getElementById('pgr-print').addEventListener('click',function(){
-    var w=zoom; if(w){ zoom=false; stage.classList.remove('zoom'); }
-    document.body.classList.add('pgr-printing');
-    setTimeout(function(){ window.print(); document.body.classList.remove('pgr-printing'); if(w){} },120);
+    var box=document.getElementById('pgr-print-box');
+    if(!box){
+      box=document.createElement('div'); box.id='pgr-print-box';
+      PAGES.forEach(function(n){ var im=new Image(); im.src=FULL(n); box.appendChild(im); });
+      document.body.appendChild(box);
+    }
+    var imgs=[].slice.call(box.querySelectorAll('img')), left=imgs.length;
+    function fire(){ document.body.classList.add('pgr-printing'); window.print(); document.body.classList.remove('pgr-printing'); }
+    if(left===0){ fire(); return; }
+    var done=function(){ if(--left<=0) fire(); };
+    imgs.forEach(function(im){ if(im.complete) done(); else { im.onload=done; im.onerror=done; } });
+    setTimeout(function(){ if(left>0){ left=0; fire(); } },2000);
   });
-  var t; window.addEventListener('resize',function(){ clearTimeout(t); t=setTimeout(function(){draw(cur);},200); });
+
+  /* ===== 전체화면 확대 뷰어 (줌 · 팬) ===== */
+  var GV=(function(){
+    var lb=document.getElementById('gv-lb'),
+        gstage=document.getElementById('gv-stage'),
+        gimg=document.getElementById('gv-img'),
+        zval=document.getElementById('gv-zval'),
+        cnt=document.getElementById('gv-cnt');
+    var gi=0, base=0, scale=1;
+    function computeBase(){ base=Math.min(1180, gstage.clientWidth-40); if(base<260) base=Math.max(220,gstage.clientWidth-16); }
+    function apply(){ gimg.style.width=(base*scale)+'px'; zval.textContent=Math.round(scale*100)+'%'; gimg.classList.toggle('zoomed',scale>1.01); gimg.style.cursor=scale>1.01?'grab':'zoom-in'; }
+    function loadPage(i){
+      gi=(i+PAGES.length)%PAGES.length;
+      gimg.src=FULL(PAGES[gi]); gimg.alt='페인팅 가이드 '+PAGES[gi]+'면';
+      cnt.textContent=(gi+1)+' / '+PAGES.length;
+      scale=1; computeBase(); apply(); gstage.scrollTop=0; gstage.scrollLeft=0;
+    }
+    function open(i){ lb.classList.add('open'); document.body.style.overflow='hidden'; loadPage(i); }
+    function close(){ lb.classList.remove('open'); document.body.style.overflow=''; gimg.src=''; show(gi); }
+    function zoom(d,cx,cy){
+      var prev=scale, ns=Math.min(4,Math.max(.5,+(scale+d).toFixed(2)));
+      if(ns===prev) return;
+      if(cx!=null){
+        var r=gstage.getBoundingClientRect();
+        var rx=(gstage.scrollLeft+cx-r.left)/(base*prev);
+        var ry=(gstage.scrollTop +cy-r.top )/(base*prev);
+        scale=ns; apply();
+        gstage.scrollLeft=rx*base*scale-(cx-r.left);
+        gstage.scrollTop =ry*base*scale-(cy-r.top);
+      } else { scale=ns; apply(); }
+    }
+    document.getElementById('gv-in').addEventListener('click',function(){ zoom(.25); });
+    document.getElementById('gv-out').addEventListener('click',function(){ zoom(-.25); });
+    document.getElementById('gv-fit').addEventListener('click',function(){ scale=1; computeBase(); apply(); gstage.scrollTop=0; gstage.scrollLeft=0; });
+    document.getElementById('gv-close').addEventListener('click',close);
+    document.getElementById('gv-prev').addEventListener('click',function(){ loadPage(gi-1); });
+    document.getElementById('gv-next').addEventListener('click',function(){ loadPage(gi+1); });
+    gimg.addEventListener('click',function(e){
+      if(scale>1.01){ scale=1; apply(); gstage.scrollTop=0; gstage.scrollLeft=0; }
+      else zoom(1.0, e.clientX, e.clientY);
+    });
+    gstage.addEventListener('wheel',function(e){ if(!lb.classList.contains('open'))return; e.preventDefault(); zoom(e.deltaY<0?.2:-.2, e.clientX, e.clientY); },{passive:false});
+    var drag=false,sx,sy,sl,st;
+    gstage.addEventListener('pointerdown',function(e){ if(scale<=1.01)return; drag=true;sx=e.clientX;sy=e.clientY;sl=gstage.scrollLeft;st=gstage.scrollTop; try{gstage.setPointerCapture(e.pointerId);}catch(_){}; gimg.style.cursor='grabbing'; });
+    gstage.addEventListener('pointermove',function(e){ if(!drag)return; gstage.scrollLeft=sl-(e.clientX-sx); gstage.scrollTop=st-(e.clientY-sy); });
+    gstage.addEventListener('pointerup',function(){ drag=false; if(scale>1.01)gimg.style.cursor='grab'; });
+    lb.addEventListener('click',function(e){ if(e.target===lb) close(); });
+    document.addEventListener('keydown',function(e){
+      if(!lb.classList.contains('open'))return;
+      if(e.key==='Escape')close();
+      else if(e.key==='ArrowLeft')loadPage(gi-1);
+      else if(e.key==='ArrowRight')loadPage(gi+1);
+      else if(e.key==='+'||e.key==='=')zoom(.25);
+      else if(e.key==='-')zoom(-.25);
+    });
+    window.addEventListener('resize',function(){ if(lb.classList.contains('open')&&scale<=1.01){computeBase();apply();} });
+    return { open:open };
+  })();
+
+  show(0);
 })();
 </script>
 <script id="pg-script">
@@ -692,7 +789,11 @@
     if(c){ open(ORDER.indexOf(c.getAttribute('data-id'))); return; }
   });
   document.getElementById('pg-print').addEventListener('click',function(){
-    var s=scale; scale=1; apply(); window.print(); scale=s; apply();
+    var s=scale; scale=1; apply();
+    document.body.classList.add('lb-printing');
+    window.print();
+    document.body.classList.remove('lb-printing');
+    scale=s; apply();
   });
   document.getElementById('pg-close').addEventListener('click',close);
   document.getElementById('pg-prev').addEventListener('click',function(){load(cur-1);});
