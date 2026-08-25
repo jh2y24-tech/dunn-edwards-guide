@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "brand": "Dunn-Edwards",
   "distributor": "Jeswood 던에드워드 코리아",
   "updated": "2026-08-25",
@@ -10,7 +10,7 @@
     "guides": "형제상사 페인팅 가이드"
   },
   "conventions": {
-    "coverage_basis": "coverage_m2_per_L은 완성(은폐력) 기준값. 소요량 = 면적 ÷ coverage_m2_per_L × (1+로스). 도장횟수(coats)는 표기용이며 소요량에 곱하지 않음.",
+    "coverage_basis": "coverage_m2_per_L은 완성(은폐력) 기준값. 소요량 = 면적 ÷ coverage_m2_per_L × (1+로스). coats는 표기용이며 소요량에 곱하지 않음.",
     "can_sizes": {
       "q": {
         "label": "1QT",
@@ -30,7 +30,7 @@
     },
     "pyeong_per_m2": 0.3025,
     "loss_default_pct": 5,
-    "purchase_rule": "취급 캔 규격과 price_krw로 총액 최소 조합을 계산(비용 최소→남는양 최소→통수 최소)."
+    "purchase_rule": "취급 캔 규격과 price_krw로 총액 최소 조합 계산(비용→남는양→통수)."
   },
   "product_categories": [
     {
@@ -75,6 +75,7 @@
       "category": "interior",
       "category_label": "내부용 벽면",
       "tier": "최고급",
+      "tier_class": "top-tier",
       "type": "디럭스 인테리어 무광 · 크로마스테이™ 세라믹 기술 · 초저 VOC · EG-FREE",
       "desc": "특허 받은 세라믹 테크놀러지를 포함한 크로마스테이™ 기술로 개발한 혁신적인 인테리어 무광 페인트. 일상의 오염 얼룩을 쉽게 제거하고 흠집·가벼운 충격으로 인한 벗겨짐을 방지해 공간을 언제나 새것처럼 유지합니다. 사용법이 간단하고 매우 낮은 VOC로 고급 주거·학교·병원·유동인구가 많은 상업시설에 이상적입니다.",
       "features": [
@@ -87,7 +88,8 @@
       "surfaces": "거실 · 아이방 · 침실 · 부엌/욕실(벽면) · 복도 · 천장 · 교실 · 사무실 · 문/창문",
       "sheens": [
         "무광"
-      ]
+      ],
+      "title_img": "img/asset-e458dc07ac.webp"
     },
     {
       "code": "EVER",
@@ -95,6 +97,7 @@
       "category": "interior",
       "category_label": "내부용 벽면",
       "tier": "최고급",
+      "tier_class": "top-tier",
       "type": "100% 아크릴 · 셀프 프라이밍 · 무 VOC*·저취",
       "desc": "성능·스타일·아름다움을 갖춘 최고급 내부용 페인트. 도포가 쉽고 물로 쉽게 닦입니다.",
       "features": [
@@ -118,6 +121,7 @@
       "category": "interior",
       "category_label": "내부용 벽면",
       "tier": "최고급",
+      "tier_class": "top-tier",
       "type": "100% 아크릴 · 셀프 프라이밍 · ≤50 g/L",
       "desc": "오래 지속되는 보호와 우수한 은폐력·얼룩 저항을 제공하는 계란광 페인트. 빠르게 마르고 냄새가 적습니다.",
       "features": [
@@ -138,6 +142,7 @@
       "category": "interior",
       "category_label": "내부용 벽면",
       "tier": "고급",
+      "tier_class": "premium",
       "type": "프리미엄 아크릴 · 무 VOC*(무광 15 g/L) · Green Wise GOLD",
       "desc": "견고하고 내구성이 뛰어난 벨벳 마감. 반복 세척에 강하고 냄새가 거의 없습니다.",
       "features": [
@@ -162,6 +167,7 @@
       "category": "exterior",
       "category_label": "내부 · 외부용",
       "tier": "최고급",
+      "tier_class": "premium",
       "type": "100% 아크릴 · ≤50 g/L",
       "desc": "최고급 외부 보호 성능. UV 변색·오염 축적·곰팡이·풍화·수분 침투 결함으로부터 최대한 보호합니다.",
       "features": [
@@ -187,6 +193,7 @@
       "category": "exterior",
       "category_label": "외부용",
       "tier": "전문가용",
+      "tier_class": "pro",
       "type": "100% 아크릴 무광 · ≤50 g/L",
       "desc": "광범위한 주거·상업 공사에 적합한 전문 외부용 무광 페인트. 우수한 은폐력과 내구성.",
       "features": [
@@ -207,6 +214,7 @@
       "category": "industrial",
       "category_label": "산업 · 금속",
       "tier": "최고급",
+      "tier_class": "top-tier",
       "type": "수성 우레탄 알키드 · 내부/외부 · ≤50 g/L",
       "desc": "경도와 유연성의 균형이 탁월한 최고급 내·외부 에나멜. 매끄러운 마감과 황변 방지력.",
       "features": [
@@ -230,6 +238,7 @@
       "category": "trim",
       "category_label": "캐비닛 · 도어 · 트림",
       "tier": "고급",
+      "tier_class": "premium",
       "type": "우레탄 변성 아크릴 · 내부용 · ≤50 g/L",
       "desc": "래커처럼 보이는 마감을 빠르게 형성하는 캐비닛·도어·트림 전용 페인트. 황변되지 않습니다.",
       "features": [
@@ -250,6 +259,7 @@
       "category": "primer",
       "category_label": "프라이머",
       "tier": "스페셜티",
+      "tier_class": "premium",
       "type": "실내 · 석고보드 표면 컨디셔너(물퍼티) · 레벨5 마감 · EG-FREE · RAVOC",
       "desc": "석고보드(드라이월) 전용 표면 컨디셔너입니다. 스프레이 또는 롤러로 도포해 레벨4 마감을 스킴코트 없이 레벨5로 끌어올립니다. 마감 조인트와 미처리 석고보드 사이의 흡수율(포로시티) 차이로 생기는 문제를 없애고, 부드럽고 샌딩이 쉬운 표면을 만들어 도장 전 바탕을 균일하게 정리합니다. 신축 석고보드의 표면 종이와 조인트 컴파운드 간 질감 차이를 최소화하는 데 권장됩니다.",
       "features": [
@@ -264,7 +274,8 @@
         "석고보드 전용",
         "도장 전 바탕처리"
       ],
-      "homepage": "https://www.jeswood.com/shop/goods_detail.php?ps_uid=12952"
+      "homepage": "https://www.jeswood.com/shop/goods_detail.php?ps_uid=12952",
+      "title_img": "img/asset-0c0f7a985a.webp"
     },
     {
       "code": "MOLD",
@@ -272,6 +283,7 @@
       "category": "primer",
       "category_label": "프라이머 · 곰팡이 살균",
       "tier": "스페셜티",
+      "tier_class": "premium",
       "type": "실내·외 · 곰팡이 살균 프라이머 · 수성(Water-Base) · 화이트",
       "desc": "기존 곰팡이·곰팡이(mildew)·냄새 유발 박테리아 및 기타 진균 위에 직접 도장할 수 있는 살균성 보호 코팅 프라이머입니다. 도막이 곰팡이·조류의 재성장을 억제하고, 백묵화된 사이딩·조적·금속 표면에 대한 부착을 높입니다. 벽지(월커버링) 시공 전 바탕용으로도 우수합니다. 수성·화이트.",
       "features": [
@@ -287,8 +299,8 @@
         "곰팡이 살균 프라이머",
         "수성"
       ],
-      "image": "img/de-zinsser-mold-killing.png",
-      "homepage": "https://www.jeswood.com/shop/goods_detail.php?ps_uid=13251"
+      "homepage": "https://www.jeswood.com/shop/goods_detail.php?ps_uid=13251",
+      "image": "img/de-zinsser-mold-killing.png"
     },
     {
       "code": "VNPR00",
@@ -296,6 +308,7 @@
       "category": "primer",
       "category_label": "프라이머",
       "tier": "내부 실러",
+      "tier_class": "pro",
       "type": "수성 공중합체 · 5 g/L VOC",
       "desc": "새 건식벽의 불안정한 표면을 안정시키는 내부용 프라이머/실러. 침투·실링을 돕습니다.",
       "features": [
@@ -316,6 +329,7 @@
       "category": "primer",
       "category_label": "프라이머",
       "tier": "얼룩 차단",
+      "tier_class": "pro",
       "type": "수성 알키드 · 내부/외부 · ≤50 g/L",
       "desc": "은폐력이 강한 얼룩 방지 프라이머. 음식·그리스·물·연기·잉크·립스틱·크레용·탄닌 얼룩을 차단합니다.",
       "features": [
@@ -336,6 +350,7 @@
       "category": "primer",
       "category_label": "프라이머",
       "tier": "트림 프라이머",
+      "tier_class": "pro",
       "type": "100% 아크릴 · 내부용 · 초저 VOC",
       "desc": "캐비닛·도어·트림 전용 속건성 목재 프라이머. 뛰어난 연마성과 실링·얼룩 방지 성능.",
       "features": [
@@ -356,6 +371,7 @@
       "category": "primer",
       "category_label": "프라이머",
       "tier": "접착 프라이머",
+      "tier_class": "pro",
       "type": "접착 프라이머 · 내부/외부",
       "desc": "난접착 표면과 아연 도금 등 까다로운 기재에 강한 부착력을 제공하는 만능 접착 프라이머.",
       "features": [
@@ -376,6 +392,7 @@
       "category": "primer",
       "category_label": "프라이머",
       "tier": "금속 프라이머",
+      "tier_class": "pro",
       "type": "녹 방지 금속 프라이머 · 반응성 안료",
       "desc": "철 함유 금속 표면의 녹·부식을 차단하는 프라이머. 탑코트의 안정적 기반을 만듭니다.",
       "features": [
@@ -396,6 +413,7 @@
       "category": "primer",
       "category_label": "프라이머",
       "tier": "금속 프라이머",
+      "tier_class": "pro",
       "type": "고성능 수성 아크릴 프라이머 · 내부/외부 · 저 VOC(최대 50g/L) · 저취",
       "desc": "휘발성 유기 화합물(VOC)이 매우 적고 냄새가 매우 적은 단일 성분 고성능 수성 아크릴 프라이머. 아연 도금 강철·알루미늄·구리·황동 등 난접착 금속면에 직접(DTM) 도포해 우수한 부착력과 내부식성을 제공하는 ULTRASHIELD 직접 금속 시스템 프라이머.",
       "features": [
@@ -408,7 +426,8 @@
       "surfaces": "아연 도금 금속 · 알루미늄 · 구리 · 황동 · 기타 철금속/비철금속",
       "sheens": [
         "프라이머"
-      ]
+      ],
+      "title_img": "img/asset-aba921616e.webp"
     },
     {
       "code": "EZPR00",
@@ -416,6 +435,7 @@
       "category": "primer",
       "category_label": "프라이머",
       "tier": "외부 목재 프라이머",
+      "tier_class": "pro",
       "type": "외부 전용 · 100% 아크릴 목재 프라이머 · 초저 VOC(50g/L) · EG-FREE · 저취",
       "desc": "레드우드·삼나무처럼 탄닌이 배어나오는 목재의 얼룩을 차단·고정하는 외부 전용 100% 아크릴 목재 프라이머. 뛰어난 부착력과 에나멜 홀드아웃으로 탑코트 마감을 매끄럽게 받쳐줍니다.",
       "features": [
@@ -429,8 +449,8 @@
       "sheens": [
         "프라이머"
       ],
-      "image": "img/de-ez-prime-premium.png",
-      "homepage": "https://www.jeswood.com/shop/goods_detail.php?ps_uid=10846"
+      "homepage": "https://www.jeswood.com/shop/goods_detail.php?ps_uid=10846",
+      "image": "img/de-ez-prime-premium.png"
     },
     {
       "code": "ENCT",
@@ -438,6 +458,7 @@
       "category": "industrial",
       "category_label": "산업 · 금속",
       "tier": "산업 유지보수",
+      "tier_class": "pro",
       "type": "수성 아크릴 · 내부/외부 고성능 · 최저 VOC",
       "desc": "경량~경중량 산업 유지보수용 코팅. 금속 직접 도포가 가능하고 내부식성이 우수합니다.",
       "features": [
@@ -459,6 +480,7 @@
       "category": "industrial",
       "category_label": "산업 · 금속",
       "tier": "산업 유지보수",
+      "tier_class": "pro",
       "type": "수성 아크릴 에폭시 · 사전 촉매화 · 내부용 반광 · 최저 VOC",
       "desc": "VOC가 매우 적고 사전 촉매화된 고성능 내부용 수성 단일 성분 아크릴 에폭시. 뛰어난 내구성과 화학적 저항성이 필요한 병원·학교·호텔·카페 등 유지관리 요구가 많은 내부 공간에 적합합니다.",
       "features": [
@@ -473,18 +495,18 @@
       "sheens": [
         "반광택"
       ],
+      "homepage": "https://www.dunnedwards.com/product/enduracat/",
       "image": "img/de-enduracat.png",
       "pdfs": [
         {
           "name": "ENDURACAT 제품 데이터시트 (PDS)",
-          "url": "docs/ENPX50-KO-PDS-1225.pdf"
+          "url": "pdf/ENPX50-KO-PDS-1225.pdf"
         },
         {
           "name": "ENDURA SERIES 브로셔",
-          "url": "docs/ENDURA-SERIES-KO-PB-0225.pdf"
+          "url": "pdf/ENDURA-SERIES-KO-PB-0225.pdf"
         }
-      ],
-      "homepage": "https://www.dunnedwards.com/product/enduracat/"
+      ]
     },
     {
       "code": "DAMP",
@@ -492,6 +514,7 @@
       "category": "waterproof",
       "category_label": "방수 · 기능성",
       "tier": "방수 코팅",
+      "tier_class": "pro",
       "type": "수성 아크릴 방수 페인트 · 저 VOC · 저취 · 즉시 사용",
       "desc": "지하 벽면·기초·옹벽은 물론 결로·곰팡이가 잦은 욕실 타일까지 강력한 방수와 곰팡이 억제를 제공하는 수성 아크릴 페인트. 최대 15 PSI의 수압을 견딥니다.",
       "features": [
@@ -513,6 +536,7 @@
       "category": "waterproof",
       "category_label": "방수 · 기능성",
       "tier": "콘크리트 씰러",
+      "tier_class": "pro",
       "type": "수성 우레탄 강화 콘크리트 보호 씰러 · 새틴",
       "desc": "비코팅 콘크리트는 물론 스테인·페인트로 도장된 바닥 표면을 방수·보호하는 우레탄 강화 투명 씰러입니다. 수분·염분·염소·오일·타이어 자국에 강하고 변색이 없어 실내외 수평면에 모두 사용합니다.",
       "features": [
@@ -527,7 +551,8 @@
       "sheens": [
         "새틴/저광택"
       ],
-      "homepage": "https://www.jeswood.com/shop/goods_detail.php?ps_uid=10860"
+      "homepage": "https://www.jeswood.com/shop/goods_detail.php?ps_uid=10860",
+      "title_img": "img/asset-8619af17b1.webp"
     },
     {
       "code": "ORIG",
@@ -535,6 +560,7 @@
       "category": "waterproof",
       "category_label": "방수 · 기능성",
       "tier": "수직면 방수재",
+      "tier_class": "pro",
       "type": "수성 아크릴 투명 방수·발수재 · 무광",
       "desc": "콘크리트·목재·석재 등 수직 벽면에 흡수되어 강력한 방수 장벽을 형성하는 다용도 투명 방수·발수제입니다. 건조 후 투명·무광이며 상도 접착을 도와 프라이머로도 사용합니다.",
       "features": [
@@ -548,7 +574,8 @@
       "surfaces": "콘크리트·벽돌·석재 수직 벽면 · 사이딩 · 회벽",
       "sheens": [
         "무광(건조 후 투명)"
-      ]
+      ],
+      "title_img": "img/asset-0e56beebbc.webp"
     },
     {
       "code": "INSU",
@@ -556,6 +583,7 @@
       "category": "waterproof",
       "category_label": "방수 · 기능성",
       "tier": "단열·결로방지 첨가제",
+      "tier_class": "pro",
       "type": "세라믹 단열·차열 페인트 첨가제",
       "desc": "페인트에 섞어 쓰는 세라믹 미립자 단열·차열 첨가제입니다. 도막에 무수한 공기층을 형성해 열 전달을 막아 단열·차열, 결로 방지, 곰팡이 억제, 냉난방 에너지 절감 효과를 더해 줍니다. 물을 타지 않고 충분히 저어 도료 전체에 고르게 분산시켜 사용합니다.",
       "features": [
@@ -570,7 +598,8 @@
       "sheens": [
         "첨가제(도료에 혼합)"
       ],
-      "homepage": "https://www.jeswood.com/shop/goods_detail.php?ps_uid=8871"
+      "homepage": "https://www.jeswood.com/shop/goods_detail.php?ps_uid=8871",
+      "title_img": "img/asset-1b91d95d48.webp"
     },
     {
       "code": "UFLR",
@@ -578,6 +607,7 @@
       "category": "trim",
       "category_label": "원목 · 목재",
       "tier": "목재 바닥 마감제",
+      "tier_class": "pro",
       "type": "수성 폴리우레탄 목재 바닥 마감제 · 새틴",
       "desc": "인터그레인 울트라플로어는 실내 원목·마루·코르크 바닥을 위한 수성 폴리우레탄 마감제입니다. 새틴광으로 상업용 수준의 강한 내구성과 투명한 마감을 제공하며, 황변이 없고 저취·빠른 건조로 시공이 편리합니다.",
       "features": [
@@ -592,7 +622,8 @@
       "sheens": [
         "새틴(저광)"
       ],
-      "homepage": "https://www.jeswood.com/shop/goods_detail.php?ps_uid=13917"
+      "homepage": "https://www.jeswood.com/shop/goods_detail.php?ps_uid=13917",
+      "title_img": "img/asset-4eb027d678.webp"
     },
     {
       "code": "MARM",
@@ -600,6 +631,7 @@
       "category": "trim",
       "category_label": "원목 · 목재",
       "tier": "실내 목재 바닥 마감제",
+      "tier_class": "pro",
       "type": "수성 실내 목재 바닥 마감제",
       "desc": "올드마스터즈 마스터즈 아머는 실내 목재 표면을 위한 차세대 수성 마감제로, 특히 바닥에서 뛰어난 내구성을 제공합니다. 고통행 바닥에는 전용 파트 B 하드너를 첨가해 내구성을 한층 강화합니다.",
       "features": [
@@ -613,7 +645,8 @@
       "sheens": [
         "수성 마감"
       ],
-      "homepage": "https://www.jeswood.com/shop/goods_detail.php?ps_uid=13165"
+      "homepage": "https://www.jeswood.com/shop/goods_detail.php?ps_uid=13165",
+      "title_img": "img/asset-d3291b0791.webp"
     },
     {
       "code": "MARMB",
@@ -621,6 +654,7 @@
       "category": "trim",
       "category_label": "원목 · 목재",
       "tier": "전용 경화제(하드너)",
+      "tier_class": "pro",
       "type": "마스터즈 아머 전용 경화 첨가제",
       "desc": "마스터즈 아머 전용 경화제(하드너) 첨가제입니다. 고통행 바닥에서 최대 보호 성능을 제공하며, 마스터즈 아머에 함께 섞어 사용합니다. 용량 118mL(4 oz).",
       "features": [
@@ -634,8 +668,8 @@
       "sheens": [
         "첨가제(혼합 사용)"
       ],
-      "image": "img/de-masters-armor-partb.png",
-      "homepage": "https://www.jeswood.com/shop/goods_detail.php?ps_uid=13238"
+      "homepage": "https://www.jeswood.com/shop/goods_detail.php?ps_uid=13238",
+      "image": "img/de-masters-armor-partb.png"
     },
     {
       "code": "UDECK",
@@ -643,6 +677,7 @@
       "category": "trim",
       "category_label": "원목 · 목재",
       "tier": "외부 목재 오일",
+      "tier_class": "pro",
       "type": "수성 목재 오일 · 데크/외장/울타리",
       "desc": "인터그레인 울트라데크 팀버 오일은 데크·외장재·스크린·울타리용 수성 목재 오일입니다. 기존 유성 데크 오일보다 3배 오래 지속되며 벗겨짐·박리·물집이 없음을 보장합니다. 사계절 도장 가능하고 물 세척이 되는 친환경(글로벌 그린태그) 포뮬러입니다.",
       "features": [
@@ -656,7 +691,8 @@
       "surfaces": "야외 데크 · 외장 목재 · 스크린 · 울타리",
       "sheens": [
         "오일(우드톤)"
-      ]
+      ],
+      "title_img": "img/asset-e637607b47.webp"
     },
     {
       "code": "LOCK",
@@ -664,6 +700,7 @@
       "category": "primer",
       "category_label": "프라이머",
       "tier": "바닥 에폭시 초벌제",
+      "tier_class": "pro",
       "type": "콘크리트 바닥용 접착 프라이머",
       "desc": "콘크리트와 코팅된 표면 모두에 잘 붙는 초강력 바닥용 에폭시 초벌제입니다. 나노기술 미세입자가 콘크리트 기공에 깊고 고르게 침투해 접착력을 높이고, 상도 접착력을 50% 향상시켜 바닥 도장의 들뜸·벗겨짐을 방지합니다.",
       "features": [
@@ -686,6 +723,7 @@
       "category": "waterproof",
       "category_label": "방수 · 기능성",
       "tier": "바닥 텍스처 코트",
+      "tier_class": "pro",
       "type": "실크리트 데코 콘크리트 시스템 · 텍스처/컬러 코트 · 실내/외부 바닥",
       "desc": "실크리트(SILKRETE) 데코 콘크리트 시스템의 텍스처·컬러 코트. 락다운(하도) 위에 도포하고 클리어씰(상도)로 마감하는 3단계 시스템으로, 인도·경사로 등 실내외 콘크리트 바닥에 질감과 색상을 입혀 표면을 보호합니다.",
       "features": [
@@ -699,8 +737,8 @@
       "sheens": [
         "텍스처 코트"
       ],
-      "image": "img/de-floor-tex.png",
-      "homepage": "https://www.jeswood.com/shop/goods_detail.php?ps_uid=13472"
+      "homepage": "https://www.jeswood.com/shop/goods_detail.php?ps_uid=13472",
+      "image": "img/de-floor-tex.png"
     },
     {
       "code": "EPXS",
@@ -708,6 +746,7 @@
       "category": "waterproof",
       "category_label": "방수 · 기능성",
       "tier": "콘크리트 바닥 페인트",
+      "tier_class": "pro",
       "type": "수성 아크릴 에폭시 콘크리트 바닥 페인트",
       "desc": "기공이 있고 단단한 콘크리트 표면에 적합한 수성 아크릴 에폭시 계열 콘크리트·석재 전용 바닥 페인트입니다. 저취·Low VOC이며 UV에 강하고 물·기름·염분·뜨거운 타이어 열에 강하게 견딥니다. 부실한 콘크리트나 셀프레벨링 몰탈 위에는 부적합합니다.",
       "features": [
@@ -729,6 +768,7 @@
       "category": "trim",
       "category_label": "원목 · 목재",
       "tier": "외부 목재 스테인",
+      "tier_class": "pro",
       "type": "수성 반투명 외부 목재 스테인",
       "desc": "외부 목재의 색을 살려주는 고성능 반투명 수성 스테인입니다. 별도 탑코트가 필요 없을 만큼 내구성과 내마모성이 우수하며, Hydroguard 기술로 자외선·물·마찰로부터 목재를 보호합니다. 새 목재는 세척 후 젖은 상태에서도 즉시 도포할 수 있습니다.",
       "features": [
@@ -749,6 +789,7 @@
   "pricing": [
     {
       "sku_label": "EXQUISITE 익스퀴짓 무광",
+      "group": "상도 (기본 2회)",
       "sheen": "무광",
       "coverage_m2_per_L": 11.0,
       "coats": 2,
@@ -776,6 +817,7 @@
     },
     {
       "sku_label": "EVEREST 에베레스트 무광",
+      "group": "상도 (기본 2회)",
       "sheen": "무광",
       "coverage_m2_per_L": 10.7,
       "coats": 2,
@@ -803,6 +845,7 @@
     },
     {
       "sku_label": "EVEREST 에베레스트 벨벳광",
+      "group": "상도 (기본 2회)",
       "sheen": "벨벳광",
       "coverage_m2_per_L": 10.7,
       "coats": 2,
@@ -830,6 +873,7 @@
     },
     {
       "sku_label": "SUPREMA 슈프리마 무광",
+      "group": "상도 (기본 2회)",
       "sheen": "무광",
       "coverage_m2_per_L": 9.8,
       "coats": 2,
@@ -857,6 +901,7 @@
     },
     {
       "sku_label": "SUPREMA 슈프리마 벨벳광",
+      "group": "상도 (기본 2회)",
       "sheen": "벨벳광",
       "coverage_m2_per_L": 9.8,
       "coats": 2,
@@ -884,6 +929,7 @@
     },
     {
       "sku_label": "SUPREMA 슈프리마 에그쉘",
+      "group": "상도 (기본 2회)",
       "sheen": "에그쉘",
       "coverage_m2_per_L": 9.8,
       "coats": 2,
@@ -911,6 +957,7 @@
     },
     {
       "sku_label": "SPARTAWALL 스파르타월",
+      "group": "상도 (기본 2회)",
       "sheen": null,
       "coverage_m2_per_L": 9.5,
       "coats": 2,
@@ -919,6 +966,7 @@
     },
     {
       "sku_label": "EVERSHIELD 에버쉴드 에그쉘",
+      "group": "상도 (기본 2회)",
       "sheen": "에그쉘",
       "coverage_m2_per_L": 9.5,
       "coats": 2,
@@ -946,6 +994,7 @@
     },
     {
       "sku_label": "EVERSHIELD 에버쉴드 저광",
+      "group": "상도 (기본 2회)",
       "sheen": "저광",
       "coverage_m2_per_L": 9.5,
       "coats": 2,
@@ -973,6 +1022,7 @@
     },
     {
       "sku_label": "ARISTOSHIELD 아리스토쉴드",
+      "group": "상도 (기본 2회)",
       "sheen": null,
       "coverage_m2_per_L": 9.5,
       "coats": 2,
@@ -1000,6 +1050,7 @@
     },
     {
       "sku_label": "DECOGLO 데코글로",
+      "group": "상도 (기본 2회)",
       "sheen": null,
       "coverage_m2_per_L": 8.9,
       "coats": 2,
@@ -1008,6 +1059,7 @@
     },
     {
       "sku_label": "ACRI-BUILD 아크리빌드",
+      "group": "상도 (기본 2회)",
       "sheen": null,
       "coverage_m2_per_L": 8.0,
       "coats": 2,
@@ -1029,6 +1081,7 @@
     },
     {
       "sku_label": "ENDURA-COAT 엔듀라코트",
+      "group": "상도 (기본 2회)",
       "sheen": null,
       "coverage_m2_per_L": 9.8,
       "coats": 2,
@@ -1044,6 +1097,7 @@
     },
     {
       "sku_label": "ENDURACAT 엔듀라캣 (사전촉매 에폭시)",
+      "group": "상도 (기본 2회)",
       "sheen": null,
       "coverage_m2_per_L": 9.5,
       "coats": 2,
@@ -1059,6 +1113,7 @@
     },
     {
       "sku_label": "DECOPRIME 데코프라임",
+      "group": "프라이머 (기본 1회)",
       "sheen": null,
       "coverage_m2_per_L": 9.2,
       "coats": 1,
@@ -1067,6 +1122,7 @@
     },
     {
       "sku_label": "BLOCK-IT 블록잇",
+      "group": "프라이머 (기본 1회)",
       "sheen": null,
       "coverage_m2_per_L": 7.7,
       "coats": 1,
@@ -1075,6 +1131,7 @@
     },
     {
       "sku_label": "BLOC-RUST 블록러스트",
+      "group": "프라이머 (기본 1회)",
       "sheen": null,
       "coverage_m2_per_L": 7.7,
       "coats": 1,
@@ -1083,6 +1140,7 @@
     },
     {
       "sku_label": "ULTRA-GRIP® Premium 울트라그립 프리미엄",
+      "group": "프라이머 (기본 1회)",
       "sheen": null,
       "coverage_m2_per_L": 7.4,
       "coats": 1,
@@ -1110,6 +1168,7 @@
     },
     {
       "sku_label": "VINYLASTIC 비닐라스틱",
+      "group": "프라이머 (기본 1회)",
       "sheen": null,
       "coverage_m2_per_L": 6.4,
       "coats": 1,
@@ -1118,6 +1177,7 @@
     },
     {
       "sku_label": "PREP-WALL 프렙월(퍼티)",
+      "group": "프라이머 (기본 1회)",
       "sheen": null,
       "coverage_m2_per_L": 4.0,
       "coats": 1,
@@ -1126,6 +1186,7 @@
     },
     {
       "sku_label": "EPOXY-SEAL 에폭시씰",
+      "group": "바닥",
       "sheen": null,
       "coverage_m2_per_L": 9.5,
       "coats": 2,
@@ -1134,6 +1195,7 @@
     },
     {
       "sku_label": "LOCK-DOWN 락다운 (바닥 접착 초벌)",
+      "group": "특수 프라이머 (바닥·금속·방곰팡이)",
       "sheen": null,
       "coverage_m2_per_L": 4.9,
       "coats": 1,
@@ -1142,6 +1204,7 @@
     },
     {
       "sku_label": "ZINSSER 몰드킬링 (곰팡이 살균 프라이머)",
+      "group": "특수 프라이머 (바닥·금속·방곰팡이)",
       "sheen": null,
       "coverage_m2_per_L": 10.4,
       "coats": 1,
@@ -1150,6 +1213,7 @@
     },
     {
       "sku_label": "EZ-PRIME® Premium 이지프라임 (외부 목재)",
+      "group": "특수 프라이머 (바닥·금속·방곰팡이)",
       "sheen": null,
       "coverage_m2_per_L": 7.7,
       "coats": 1,
@@ -1171,6 +1235,7 @@
     },
     {
       "sku_label": "ULTRASHIELD 갈바 (아연도금 금속)",
+      "group": "특수 프라이머 (바닥·금속·방곰팡이)",
       "sheen": null,
       "coverage_m2_per_L": 7.4,
       "coats": 1,
@@ -1179,6 +1244,7 @@
     },
     {
       "sku_label": "CLEAR-SEAL 클리어씰",
+      "group": "바닥 · 콘크리트 마감 (특수)",
       "sheen": null,
       "coverage_m2_per_L": 5.5,
       "coats": 2,
@@ -1187,6 +1253,7 @@
     },
     {
       "sku_label": "FLOR-TEX 플로어텍스 (텍스처 코트)",
+      "group": "바닥 · 콘크리트 마감 (특수)",
       "sheen": null,
       "coverage_m2_per_L": 2.9,
       "coats": 2,
@@ -1195,6 +1262,7 @@
     },
     {
       "sku_label": "MASTERS ARMOR 마스터즈 아머",
+      "group": "바닥 · 콘크리트 마감 (특수)",
       "sheen": null,
       "coverage_m2_per_L": 8.6,
       "coats": 3,
@@ -1203,6 +1271,7 @@
     },
     {
       "sku_label": "ULTRAFLOOR 울트라플로어",
+      "group": "바닥 · 콘크리트 마감 (특수)",
       "sheen": null,
       "coverage_m2_per_L": 11.0,
       "coats": 3,
@@ -1211,6 +1280,7 @@
     },
     {
       "sku_label": "DAMPLOCK 덤프록 (방수)",
+      "group": "방수 · 외부 목재 (특수)",
       "sheen": null,
       "coverage_m2_per_L": 2.5,
       "coats": 2,
@@ -1219,6 +1289,7 @@
     },
     {
       "sku_label": "ORIGINAL 오리지날 (투명 방수)",
+      "group": "방수 · 외부 목재 (특수)",
       "sheen": null,
       "coverage_m2_per_L": 4.7,
       "coats": 2,
@@ -1227,6 +1298,7 @@
     },
     {
       "sku_label": "ULTRADECK 울트라데크 팀버 오일",
+      "group": "방수 · 외부 목재 (특수)",
       "sheen": null,
       "coverage_m2_per_L": 12.0,
       "coats": 2,
@@ -1235,6 +1307,7 @@
     },
     {
       "sku_label": "ULTRADECK 울트라데크 팀버 스테인",
+      "group": "방수 · 외부 목재 (특수)",
       "sheen": null,
       "coverage_m2_per_L": 9.0,
       "coats": 2,
@@ -1697,5 +1770,5 @@
       "delivery_notice": "겨울철 영하의 날씨가 계속되는 경우 택배 이동 중 페인트가 얼 수 있어 기상 상황에 따라 택배/화물 출고가 지연될 수 있습니다. 페인트가 얼면 재사용이 불가하니, 받으신 페인트는 얼지 않도록 실온 보관해주세요."
     }
   ],
-  "notes": "제품 카탈로그·가격(products/pricing) + 시공 가이드(guides) 통합 데이터. 가격 수정 시 index.html 계산기 옵션값과 함께 반영 필요."
+  "notes": "제품 카탈로그·가격(products/pricing) + 시공 가이드(guides) 통합 데이터. index.html이 이 파일을 읽어 제품 카드·계산기 렌더(로딩 실패 시 내장 폴백)."
 }

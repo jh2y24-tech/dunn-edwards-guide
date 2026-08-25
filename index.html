@@ -1886,6 +1886,51 @@ function renderProducts(filter){
 }
 renderProducts('all');
 try{window.__renderProducts=renderProducts;}catch(e){}
+
+/* ===== 외부 데이터(JSON) 연동 — 실패 시 위 인라인 데이터로 자동 폴백 ===== */
+(function(){
+  function mapProduct(p){
+    return {cat:p.category,catLabel:p.category_label,name:p.name,code:p.code,
+      tier:p.tier,tierClass:p.tier_class||'',type:p.type,desc:p.desc,
+      feats:p.features||[],use:p.surfaces||'',sheens:p.sheens||[],
+      video:p.video||undefined,homepage:p.homepage||undefined,titleImg:p.title_img||undefined};
+  }
+  function applyData(data){
+    if(!data) return;
+    // 1) 제품 카드
+    if(Array.isArray(data.products) && data.products.length){
+      PRODUCTS.length=0;
+      Object.keys(PRODUCT_IMAGES).forEach(k=>delete PRODUCT_IMAGES[k]);
+      Object.keys(PRODUCT_PDFS).forEach(k=>delete PRODUCT_PDFS[k]);
+      data.products.forEach(p=>{
+        PRODUCTS.push(mapProduct(p));
+        if(p.image) PRODUCT_IMAGES[p.code]=p.image;
+        if(p.pdfs)  PRODUCT_PDFS[p.code]=p.pdfs;
+      });
+      if(typeof window.__renderProducts==='function') window.__renderProducts('all');
+    }
+    // 2) 계산기 — 기존 select 구조는 유지, 옵션 '가격/은폐력 값'만 라벨 매칭으로 교체
+    if(Array.isArray(data.pricing) && data.pricing.length){
+      var byLabel={};
+      data.pricing.forEach(function(pr){
+        var sizes=(pr.cans||[]).map(function(c){return c.size;}).filter(Boolean);
+        var prices=(pr.cans||[]).map(function(c){return c.price_krw;}).filter(function(x){return x!=null;});
+        var v=[pr.coverage_m2_per_L,pr.coats,pr.coverage_ft2_gal];
+        if(sizes.length){ v.push(sizes.join(',')); if(prices.length) v.push(prices.join(',')); }
+        byLabel[pr.sku_label]=v.join('|');
+      });
+      var sel=document.getElementById('cProd');
+      if(sel) Array.prototype.forEach.call(sel.querySelectorAll('option'),function(o){
+        var t=o.textContent.trim();
+        if(byLabel[t]) o.value=byLabel[t];
+      });
+    }
+  }
+  fetch('dunn_edwards_data.json',{cache:'no-store'})
+    .then(function(r){ if(!r.ok) throw new Error('http '+r.status); return r.json(); })
+    .then(function(data){ applyData(data); })
+    .catch(function(e){ /* 폴백: 인라인 데이터 그대로 사용 */ });
+})();
 /* 검색 바인딩은 하단 독립 스크립트에서 처리 */
 
 document.querySelectorAll('#filters .chip').forEach(c=>{
@@ -1954,8 +1999,8 @@ const NAMEBYCODE = {}; PRODUCTS.forEach(p=>NAMEBYCODE[p.code]=p.name);
 /* 원본 PDF 자료 (새 탭에서 열림) — GitHub docs/ 폴더에 아래 파일 업로드 */
 const PRODUCT_PDFS={
   "ENPX50":[
-    {name:"ENDURACAT 제품 데이터시트 (PDS)", url:"docs/ENPX50-KO-PDS-1225.pdf"},
-    {name:"ENDURA SERIES 브로셔", url:"docs/ENDURA-SERIES-KO-PB-0225.pdf"}
+    {name:"ENDURACAT 제품 데이터시트 (PDS)", url:"pdf/ENPX50-KO-PDS-1225.pdf"},
+    {name:"ENDURA SERIES 브로셔", url:"pdf/ENDURA-SERIES-KO-PB-0225.pdf"}
   ]
 };
 const dm = document.getElementById('docmodal');
