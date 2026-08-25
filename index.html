@@ -160,6 +160,9 @@
   .pcard .top .stripe{background:rgba(255,255,255,.45)}
   .pcard .top.has-thumb{display:flex;align-items:center;gap:13px}
   .pcard .top.has-thumb .top-text{flex:1;min-width:0}
+  .pcard .top-thumb-btn{padding:0;margin:0;border:0;background:none;flex:none;line-height:0;border-radius:10px;cursor:zoom-in;transition:transform .15s}
+  .pcard .top-thumb-btn:hover{transform:scale(1.05)}
+  .pcard .top-thumb-btn:focus-visible{outline:2px solid #fff;outline-offset:2px}
   .pcard .top-thumb{width:74px;height:74px;flex:none;border-radius:10px;background:#fff;
     padding:5px;object-fit:contain;box-shadow:0 4px 14px -6px rgba(0,0,0,.4)}
   .prodvideo{position:relative;width:100%;padding-top:56.25%;margin-top:13px;
@@ -1807,6 +1810,7 @@ function renderProducts(filter){
     el.id = 'prod-'+p.code;
     const docs = PRODUCT_DOCS[p.code] || [];
     const thumb = PRODUCT_THUMBS[p.code] || docs[0] || '';
+    const headerImg = p.titleImg || PRODUCT_THUMBS[p.code] || '';
     const docHtml = docs.length ? `
       <div class="docpreview" data-code="${p.code}" role="button" tabindex="0" aria-label="${p.name} 제품 자료 보기">
         <img class="dp-thumb" loading="lazy" src="${thumb}" alt="${p.name} 자료 미리보기">
@@ -1817,13 +1821,13 @@ function renderProducts(filter){
     const vid = (p.video||'').split('/embed/')[1] || '';
     const videoHtml = p.video ? `<a class="prodvideo-link" href="https://www.youtube.com/watch?v=${vid}" target="_blank" rel="noopener" style="background-image:url('https://img.youtube.com/vi/${vid}/hqdefault.jpg')" title="${p.name} 동영상 (YouTube에서 보기)"><span class="pv-play" aria-hidden="true">▶</span><span class="pv-label">동영상 보기 · YouTube에서 열림</span></a>` : '';
     el.innerHTML = `
-      <div class="top${p.titleImg ? ' has-thumb' : ''}">
+      <div class="top${headerImg ? ' has-thumb' : ''}">
         <div class="top-text">
           <div class="cat">${p.catLabel}</div>
           <h3>${p.name}</h3>
           <div class="code">${p.code} · ${p.type}</div>
         </div>
-        ${p.titleImg ? `<img class="top-thumb" loading="lazy" src="${p.titleImg}" alt="${p.name} 제품 이미지">` : ''}
+        ${headerImg ? `<button type="button" class="top-thumb-btn" data-img="${headerImg}" data-name="${p.name}" aria-label="${p.name} 제품 이미지 크게 보기"><img class="top-thumb" loading="lazy" src="${headerImg}" alt="${p.name} 제품 이미지"></button>` : ''}
         <div class="stripe"></div>
       </div>
       <div class="body">
@@ -1910,23 +1914,25 @@ const dmTitle = document.getElementById('dm-title');
 const dmCount = document.getElementById('dm-count');
 const dmPrev = document.getElementById('dm-prev');
 const dmNext = document.getElementById('dm-next');
-let DV = {code:null, i:0};
+let DV = {arr:[], i:0, title:''};
 function dvRender(){
-  const arr = PRODUCT_DOCS[DV.code] || [];
+  const arr = DV.arr || [];
   dmImg.src = arr[DV.i] || '';
-  dmTitle.textContent = NAMEBYCODE[DV.code] || '제품 자료';
+  dmTitle.textContent = DV.title || '제품 자료';
   dmCount.textContent = (DV.i+1) + ' / ' + arr.length;
+  dmCount.style.visibility = arr.length>1 ? 'visible' : 'hidden';
   dmPrev.style.visibility = DV.i>0 ? 'visible':'hidden';
   dmNext.style.visibility = DV.i<arr.length-1 ? 'visible':'hidden';
 }
-function dvOpen(code,i){
-  if(!PRODUCT_DOCS[code]) return;
-  DV.code=code; DV.i=i||0; dvRender();
+function dvShow(arr,title,i){
+  if(!arr||!arr.length) return;
+  DV.arr=arr; DV.title=title||'제품 자료'; DV.i=i||0; dvRender();
   dm.classList.add('show'); dm.setAttribute('aria-hidden','false');
   document.body.style.overflow='hidden';
 }
+function dvOpen(code,i){ dvShow(PRODUCT_DOCS[code], NAMEBYCODE[code], i); }
 function dvClose(){ dm.classList.remove('show'); dm.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
-function dvStep(d){ const arr=PRODUCT_DOCS[DV.code]||[]; DV.i=Math.max(0,Math.min(arr.length-1,DV.i+d)); dvRender(); }
+function dvStep(d){ const arr=DV.arr||[]; DV.i=Math.max(0,Math.min(arr.length-1,DV.i+d)); dvRender(); }
 dmPrev.addEventListener('click',e=>{e.stopPropagation();dvStep(-1);});
 dmNext.addEventListener('click',e=>{e.stopPropagation();dvStep(1);});
 document.getElementById('dm-close').addEventListener('click',dvClose);
@@ -1939,10 +1945,15 @@ document.addEventListener('keydown',e=>{
 });
 // open from preview (event delegation)
 document.getElementById('grid').addEventListener('click',e=>{
+  const t=e.target.closest('.top-thumb-btn');
+  if(t){ dvShow([t.dataset.img], t.dataset.name+' 제품 이미지', 0); return; }
   const el=e.target.closest('.docpreview'); if(el) dvOpen(el.dataset.code,0);
 });
 document.getElementById('grid').addEventListener('keydown',e=>{
-  if((e.key==='Enter'||e.key===' ')){const el=e.target.closest('.docpreview'); if(el){e.preventDefault();dvOpen(el.dataset.code,0);}}
+  if(e.key!=='Enter'&&e.key!==' ') return;
+  const t=e.target.closest('.top-thumb-btn');
+  if(t){ e.preventDefault(); dvShow([t.dataset.img], t.dataset.name+' 제품 이미지', 0); return; }
+  const el=e.target.closest('.docpreview'); if(el){e.preventDefault();dvOpen(el.dataset.code,0);}
 });
 // swipe on touch
 let tsx=null;
