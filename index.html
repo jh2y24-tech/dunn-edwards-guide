@@ -327,7 +327,7 @@
   .c2-reco-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:10px}
   .c2-reco-badge{display:inline-flex;align-items:center;gap:6px;background:var(--orange);color:#fff;font-size:12.5px;font-weight:800;padding:5px 11px;border-radius:20px}
   .c2-reco-spec{font-size:12px;color:var(--muted);font-weight:700}
-  .c2-reco-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .c2-reco-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(84px,1fr));gap:10px}
   .c2-reco-cards:empty{display:none}
   .c2-rc{background:#faf7f2;border:1px solid var(--line);border-radius:10px;padding:11px 12px}
   .c2-rc .cap{font-size:12px;font-weight:800;color:var(--ink-soft)}
@@ -353,7 +353,7 @@
   .c2-loss small{flex:1 1 100%;font-size:11.5px;color:var(--muted);font-weight:600;line-height:1.5}
   /* --- 구매 통 수 결과 --- */
   .c2-buy-lead{font-size:13px;font-weight:800;color:var(--ink-soft)}
-  .c2-buy{font-size:32px;font-weight:800;color:var(--orange);line-height:1.15;letter-spacing:-.01em}
+  .c2-buy{font-size:28px;font-weight:800;color:var(--orange);line-height:1.25;letter-spacing:-.01em;word-break:keep-all}
   .c2-buy-sub{font-size:13px;color:var(--ink-soft);font-weight:600;margin:0;line-height:1.55}
   .c2-buy-calc{font-size:12px;color:var(--muted);font-weight:600;margin:0;line-height:1.55}
   @media(max-width:700px){.calc{grid-template-columns:1fr}}
@@ -1344,22 +1344,22 @@
           <select id="cProd">
             <option value="">— 제품을 선택하세요 —</option>
             <optgroup label="상도 (기본 2회)">
-              <option value="11.0|2|425~475">EXQUISITE 익스퀴짓</option>
-              <option value="10.7|2|400~475">EVEREST 에베레스트</option>
-              <option value="9.8|2|375~425">SUPREMA 슈프리마</option>
+              <option value="11.0|2|425~475|q,g,f">EXQUISITE 익스퀴짓</option>
+              <option value="10.7|2|400~475|q,g,f">EVEREST 에베레스트</option>
+              <option value="9.8|2|375~425|q,g,f">SUPREMA 슈프리마</option>
               <option value="9.5|2|350~425">SPARTAWALL 스파르타월</option>
-              <option value="9.5|2|350~425">EVERSHIELD 에버쉴드</option>
-              <option value="9.5|2|350~425">ARISTOSHIELD 아리스토쉴드</option>
+              <option value="9.5|2|350~425|q,g,f">EVERSHIELD 에버쉴드</option>
+              <option value="9.5|2|350~425|q,g,f">ARISTOSHIELD 아리스토쉴드</option>
               <option value="8.9|2|325~400">DECOGLO 데코글로</option>
-              <option value="8.0|2|300~350">ACRI-BUILD 아크리빌드</option>
-              <option value="9.8|2|375~425">ENDURA-COAT 엔듀라코트</option>
-              <option value="8.6|2|325~375">ENDURACAT 엔듀라캣 (사전촉매 에폭시·추정)</option>
+              <option value="8.0|2|300~350|g">ACRI-BUILD 아크리빌드</option>
+              <option value="9.8|2|375~425|g">ENDURA-COAT 엔듀라코트</option>
+              <option value="8.6|2|325~375|g">ENDURACAT 엔듀라캣 (사전촉매 에폭시·추정)</option>
             </optgroup>
             <optgroup label="프라이머 (기본 1회)">
               <option value="9.2|1|350~400">DECOPRIME 데코프라임</option>
               <option value="7.7|1|275~350">BLOCK-IT 블록잇</option>
               <option value="7.7|1|275~350">BLOC-RUST 블록러스트</option>
-              <option value="7.4|1|275~325">ULTRA-GRIP® Premium 울트라그립 프리미엄</option>
+              <option value="7.4|1|275~325|q,g,f">ULTRA-GRIP® Premium 울트라그립 프리미엄</option>
               <option value="6.4|1|225~300">VINYLASTIC 비닐라스틱</option>
               <option value="4.0|1|125~200">PREP-WALL 프렙월(퍼티)</option>
             </optgroup>
@@ -1369,7 +1369,7 @@
             <optgroup label="특수 프라이머 (바닥·금속·방곰팡이)">
               <option value="4.9|1|150~250">LOCK-DOWN 락다운 (바닥 접착 초벌)</option>
               <option value="10.4|1|400~450">ZINSSER 몰드킬링 (곰팡이 살균 프라이머)</option>
-              <option value="7.7|1|275~350">EZ-PRIME® Premium 이지프라임 (외부 목재)</option>
+              <option value="7.7|1|275~350|q,g">EZ-PRIME® Premium 이지프라임 (외부 목재)</option>
               <option value="7.4|1|275~325">ULTRASHIELD 갈바 (아연도금 금속)</option>
             </optgroup>
             <optgroup label="바닥 · 콘크리트 마감 (특수)">
@@ -1441,7 +1441,7 @@
         </div>
       </div>
     </div>
-    <p class="calc-note">※ 도포량 출처: 각 제품 공식 PDS의 "권장 건조 도막두께 코팅당 실제 은폐력"(갤런당 평방피트 → ㎡/L 환산). 표면 상태·기법에 따라 실제 소요량은 달라질 수 있으며, 프라이머와 상도는 각각 계산하세요. (1㎡ ≈ 0.3025평)</p>
+    <p class="calc-note">※ 도포량 출처: 각 제품 공식 PDS 은폐력(갤런당 평방피트 → ㎡/L 환산). 구매 통 수는 제품이 실제 취급하는 캔 규격(1qt 0.95L · 1gal 3.78L · 5gal 18.9L)으로 가장 경제적인 조합을 계산합니다. 표면 상태·기법에 따라 실제 소요량은 달라질 수 있으며, 프라이머와 상도는 각각 계산하세요. (1㎡ ≈ 0.3025평)</p>
   </div>
 </section>
 
@@ -1954,7 +1954,10 @@ document.querySelector('.dm-stage').addEventListener('touchend',e=>{
   if(!prod) return;
   var PYEONG=0.3025;                    // 1㎡ ≈ 0.3025평
   var M2_PER_PY=1/PYEONG;               // 1평 ≈ 3.3058㎡
-  var CANS=[18,4];                       // 판매 용량 (큰 통 우선)
+  // 취급 캔 규격 (미국 단위)
+  var CAN_LIB={ q:{L:0.946,label:'1qt',L2:'0.95L',cost:1.0}, g:{L:3.785,label:'1gal',L2:'3.78L',cost:2.7}, f:{L:18.927,label:'5gal',L2:'18.9L',cost:11.5} };
+  var curSizes=[];                       // 현재 제품의 취급 규격 (L 내림차순)
+  function setSizes(codes){ curSizes=codes.map(function(c){return CAN_LIB[c];}).filter(Boolean).sort(function(a,b){return b.L-a.L;}); }
   function num(x,d){ var v=parseFloat(x); return isFinite(v)?v:d; }
   function pyeong(m2){ return (m2*PYEONG).toFixed(1); }
   function trim(n){ return (Math.round(n*100)/100).toString(); }
@@ -1973,14 +1976,41 @@ document.querySelector('.dm-stage').addEventListener('touchend',e=>{
   function renderReco(){
     var r=num(rate&&rate.value,0), n=Math.max(1,parseInt(coats&&coats.value)||2);
     var spec=g('cRecoSpec'), box=g('cRecoCards');
-    if(!(r>0) || !prod.value){ spec.textContent='제품을 선택하면 통당 시공 면적을 보여드립니다'; box.innerHTML=''; return; }
+    if(!(r>0) || !prod.value || !curSizes.length){ spec.textContent='제품을 선택하면 통당 시공 면적을 보여드립니다'; box.innerHTML=''; return; }
     spec.textContent=trim(r)+'㎡/L · '+n+'회 도포 기준';
-    box.innerHTML=CANS.map(function(s){
-      var m2=r*s;
-      return '<div class="c2-rc"><div class="cap">'+s+'L 1통</div>'
+    box.innerHTML=curSizes.map(function(cn){
+      var m2=r*cn.L;
+      return '<div class="c2-rc"><div class="cap">'+cn.label+' <small>'+cn.L2+'</small></div>'
            +'<div class="val">≒ '+m2.toFixed(0)+'<small> ㎡</small></div>'
            +'<div class="py">약 '+pyeong(m2)+'평</div></div>';
     }).join('');
+  }
+
+  // 취급 규격으로 가장 경제적인 구매 조합 (비용 최소 → 남는 양 최소 → 통 수 최소)
+  function bestBuy(need, sizes){
+    if(!sizes.length) return null;
+    var best=null, counts=new Array(sizes.length).fill(0);
+    function consider(){
+      var total=0,cans=0,cost=0,i;
+      for(i=0;i<sizes.length;i++){ total+=counts[i]*sizes[i].L; cans+=counts[i]; cost+=counts[i]*sizes[i].cost; }
+      if(total<need-1e-9||cans===0) return;
+      var lo=total-need;
+      if(!best || cost<best.cost-1e-9
+         || (Math.abs(cost-best.cost)<=1e-9 && lo<best.lo-1e-9)
+         || (Math.abs(cost-best.cost)<=1e-9 && Math.abs(lo-best.lo)<=1e-9 && cans<best.cans)){
+        best={cnt:counts.slice(),total:total,cans:cans,lo:lo,cost:cost};
+      }
+    }
+    function dfs(i,rem){
+      if(rem<=1e-9){ consider(); return; }
+      if(i>=sizes.length) return;
+      var s=sizes[i].L, last=(i===sizes.length-1);
+      var maxc=Math.ceil(rem/s-1e-9)+(last?0:1);
+      for(var c=0;c<=maxc;c++){ counts[i]=c; dfs(i+1,rem-c*s); }
+      counts[i]=0;
+    }
+    dfs(0,need);
+    return best;
   }
 
   // 구매 통 수 계산
@@ -1990,32 +2020,29 @@ document.querySelector('.dm-stage').addEventListener('touchend',e=>{
     g('cLossShow').textContent=ls+'%';
 
     var buy=g('cBuy'), sub=g('cBuySub'), cl=g('cBuyCalc');
-    if(!(area>0)||!(r>0)){ buy.textContent='–'; sub.textContent=(!prod.value?'제품과 면적을 입력해 주세요.':'면적(가로·세로 / ㎡ / 평)을 입력해 주세요.'); cl.textContent=''; return; }
+    if(!(area>0)||!(r>0)||!curSizes.length){ buy.textContent='–'; sub.textContent=(!prod.value?'제품과 면적을 입력해 주세요.':'면적(가로·세로 / ㎡ / 평)을 입력해 주세요.'); cl.textContent=''; return; }
 
     var perM2=1/r;                        // ㎡당 필요 도료(L) — 은폐력 기준
     var need=area*perM2*(1+ls/100);       // 로스 포함 총 필요량
-    // 큰 통 우선 그리디, 마지막 통은 올림
-    var rem=need, parts=[], purchased=0;
-    for(var i=0;i<CANS.length;i++){
-      var s=CANS[i];
-      var c = (i===CANS.length-1) ? Math.ceil(rem/s - 1e-9) : Math.floor(rem/s + 1e-9);
-      if(c>0){ parts.push(s+'L × '+c+'통'); rem-=c*s; purchased+=c*s; }
-    }
-    if(!parts.length){ parts.push(CANS[CANS.length-1]+'L × 1통'); purchased=CANS[CANS.length-1]; }
-    var leftover=Math.max(0,purchased-need);
+    var b=bestBuy(need,curSizes);
+    if(!b){ buy.textContent='–'; sub.textContent='계산할 수 없습니다.'; cl.textContent=''; return; }
+    var parts=[];
+    for(var i=0;i<curSizes.length;i++){ if(b.cnt[i]>0) parts.push(curSizes[i].label+' × '+b.cnt[i]+'통'); }
     buy.textContent=parts.join('  +  ');
-    sub.textContent='총 '+trim(purchased)+'L 구매 → 도료량 약 '+need.toFixed(2)+'L 사용, 약 '+leftover.toFixed(2)+'L 남음';
+    sub.textContent='총 '+trim(b.total)+'L 구매 → 도료량 약 '+need.toFixed(2)+'L 사용, 약 '+b.lo.toFixed(2)+'L 남음';
     cl.textContent=trim(area)+'㎡ ('+pyeong(area)+'평) × '+perM2.toFixed(4)+' L/㎡ × 로스 '+ls+'% · '+n+'회 걸쳐 도포';
   }
 
   function onProd(){
     var v=prod.value;
-    if(!v){ if(src) src.textContent=''; renderReco(); calc(); return; }
-    if(v==='manual'){ if(src) src.textContent='기타 제품: 아래 "세부 설정"에서 1L당 도포 면적(코팅당)과 횟수를 직접 입력하세요.'; renderReco(); calc(); return; }
+    if(!v){ if(src) src.textContent=''; setSizes(['q','g','f']); renderReco(); calc(); return; }
+    if(v==='manual'){ if(src) src.textContent='기타 제품: 아래 "세부 설정"에서 1L당 도포 면적(코팅당)과 횟수를 직접 입력하세요.'; setSizes(['q','g','f']); renderReco(); calc(); return; }
     var a=v.split('|');
     if(rate) rate.value=a[0];
     if(coats) coats.value=a[1];
-    if(src) src.textContent='선택: '+prod.options[prod.selectedIndex].text+' · 공식 도포량 약 '+a[2]+' ft²/gal(코팅당) · 기본 '+a[1]+'회 · 약 '+a[0]+'㎡/L';
+    setSizes((a[3]||'g,f').split(','));
+    var sizeTxt=curSizes.map(function(cn){return cn.label;}).join('·');
+    if(src) src.textContent='선택: '+prod.options[prod.selectedIndex].text+' · 약 '+a[0]+'㎡/L · 취급 '+sizeTxt;
     renderReco(); calc();
   }
   function refresh(){ renderReco(); calc(); }
