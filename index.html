@@ -293,13 +293,14 @@
     padding:9px 12px;border-radius:0 6px 6px 0;color:var(--orange-dark)}
 
   /* 도포량 계산기 */
-  .calc{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+  .calc{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+  .calc-right{display:flex;flex-direction:column;gap:14px}
   .calc-inputs{display:flex;flex-direction:column;gap:12px}
   .calc-inputs label{display:flex;flex-direction:column;gap:5px;font-size:13px;font-weight:700;color:var(--ink-soft)}
   .calc-inputs input[type=number]{font-family:inherit;font-size:16px;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;width:100%}
   .calc-inputs input[type=number]:focus{outline:none;border-color:var(--orange)}
   .calc-chk{flex-direction:row !important;align-items:center;gap:8px !important;font-weight:600}
-  .calc-out{background:#faf7f2;border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:14px}
+  .calc-out{background:#faf7f2;border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:10px;flex:1;justify-content:center}
   .co-main{display:flex;flex-direction:column;gap:2px}
   .co-main span{font-size:12.5px;color:var(--muted);font-weight:700}
   .co-main b{font-size:34px;font-weight:800;color:var(--orange);line-height:1}
@@ -333,16 +334,18 @@
   .c2-rc .val{font-size:22px;font-weight:800;color:var(--orange);line-height:1.15;margin-top:2px}
   .c2-rc .val small{font-size:12.5px;color:var(--muted);font-weight:700}
   .c2-rc .py{font-size:11.5px;color:var(--muted);font-weight:700;margin-top:1px}
-  /* --- 벽 크기 --- */
-  .c2-wh-field{display:flex;flex-direction:column;gap:6px}
+  /* --- 벽 크기 / 면적 입력 --- */
+  .c2-area-field{display:flex;flex-direction:column;gap:8px}
   .c2-wh-lab{font-size:13px;font-weight:700;color:var(--ink-soft)}
   .c2-wh{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-  .c2-wh input{width:96px;font-family:inherit;font-size:16px;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px}
+  .c2-wh input{width:88px;font-family:inherit;font-size:16px;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px}
   .c2-wh input:focus{outline:none;border-color:var(--orange)}
   .c2-wh-op{font-size:16px;font-weight:800;color:var(--muted)}
-  .c2-wh-out{font-size:15px;font-weight:700;color:var(--ink-soft)}
-  .c2-wh-out b{font-size:20px;font-weight:800;color:var(--ink)}
-  .c2-wh-pyeong{font-size:12.5px;color:var(--muted);font-weight:700}
+  .c2-wh-unit{font-size:13px;font-weight:700;color:var(--ink-soft)}
+  .c2-area-direct{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding-top:9px;border-top:1px dashed var(--line)}
+  .c2-area-direct input{width:82px;font-family:inherit;font-size:16px;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px}
+  .c2-area-direct input:focus{outline:none;border-color:var(--orange)}
+  .c2-area-lead{font-size:12.5px;font-weight:700;color:var(--muted);margin-right:2px}
   /* --- 로스율 --- */
   .c2-loss{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;background:#faf7f2;border:1px solid var(--line);border-radius:10px;padding:11px 13px}
   .c2-loss-lab{font-size:13px;font-weight:700;color:var(--ink-soft)}
@@ -1333,7 +1336,7 @@
     <div class="sec-head">
       <span class="tag">현장 도구</span>
       <h2>도포량 계산기</h2>
-      <p><b>제품</b>을 선택하고 벽의 <b>가로·세로(m)</b>를 입력하면, 통당 시공 면적(추천 소요량)과 실제 구매해야 할 통 수를 계산합니다. 도포량은 각 제품 <b>공식 PDS(코팅당 은폐력)</b> 기준이며, 프라이머는 1회·상도는 2회가 자동 적용되고 <b>기본 로스율 5%</b>가 반영됩니다. (표면 상태에 따라 실제 소요량은 달라질 수 있습니다.)</p>
+      <p><b>제품</b>을 선택하고 도장할 면적을 <b>가로·세로(m)</b>, <b>㎡</b>, <b>평</b> 중 편한 방식으로 입력하면(서로 자동 환산), 통당 시공 면적(추천 소요량)과 실제 구매해야 할 통 수를 계산합니다. 도포량은 각 제품 <b>공식 PDS(은폐력)</b> 기준이며 <b>기본 로스율 5%</b>가 반영됩니다. (표면 상태에 따라 실제 소요량은 달라질 수 있습니다.)</p>
     </div>
     <div class="calc">
       <div class="calc-inputs">
@@ -1386,26 +1389,23 @@
         </label>
         <p class="calc-src" id="cSrc"></p>
 
-        <!-- 추천 소요량 -->
-        <div class="c2-reco" id="cReco">
-          <div class="c2-reco-head">
-            <span class="c2-reco-badge"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M4 20V8l8-5 8 5v12"/></svg> 추천 소요량</span>
-            <span class="c2-reco-spec" id="cRecoSpec">제품을 선택하면 통당 시공 면적을 보여드립니다</span>
-          </div>
-          <div class="c2-reco-cards" id="cRecoCards"></div>
-        </div>
-
-        <!-- 벽 크기 -->
-        <div class="c2-wh-field">
-          <span class="c2-wh-lab">도장 면적 (벽 크기)</span>
+        <!-- 도장 면적 (가로·세로 / ㎡ / 평 자동 환산) -->
+        <div class="c2-area-field">
+          <span class="c2-wh-lab">도장 면적</span>
           <div class="c2-wh">
-            <input type="number" id="cW" min="0" step="0.1" placeholder="가로 m" inputmode="decimal">
+            <input type="number" id="cW" min="0" step="0.1" placeholder="가로" inputmode="decimal">
             <span class="c2-wh-op">×</span>
-            <input type="number" id="cH" min="0" step="0.1" placeholder="세로 m" inputmode="decimal">
-            <span class="c2-wh-op">=</span>
-            <span class="c2-wh-out"><b id="cAreaVal">–</b> ㎡</span>
+            <input type="number" id="cH" min="0" step="0.1" placeholder="세로" inputmode="decimal">
+            <span class="c2-wh-unit">m</span>
           </div>
-          <span class="c2-wh-pyeong" id="cPyeong">약 – 평</span>
+          <div class="c2-area-direct">
+            <span class="c2-area-lead">또는 직접</span>
+            <input type="number" id="cArea" min="0" step="0.1" placeholder="0" inputmode="decimal">
+            <span class="c2-wh-unit">㎡</span>
+            <span class="c2-wh-op">=</span>
+            <input type="number" id="cPy" min="0" step="0.1" placeholder="0" inputmode="decimal">
+            <span class="c2-wh-unit">평</span>
+          </div>
         </div>
 
         <!-- 로스율 -->
@@ -1423,11 +1423,22 @@
         </details>
       </div>
 
-      <div class="calc-out">
-        <div class="c2-buy-lead">구매해야 할 통 수</div>
-        <div class="c2-buy" id="cBuy">–</div>
-        <p class="c2-buy-sub" id="cBuySub">제품과 벽 크기를 입력해 주세요.</p>
-        <p class="c2-buy-calc" id="cBuyCalc"></p>
+      <div class="calc-right">
+        <!-- 추천 소요량 -->
+        <div class="c2-reco" id="cReco">
+          <div class="c2-reco-head">
+            <span class="c2-reco-badge"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M4 20V8l8-5 8 5v12"/></svg> 추천 소요량</span>
+            <span class="c2-reco-spec" id="cRecoSpec">제품을 선택하면 통당 시공 면적을 보여드립니다</span>
+          </div>
+          <div class="c2-reco-cards" id="cRecoCards"></div>
+        </div>
+
+        <div class="calc-out">
+          <div class="c2-buy-lead">구매해야 할 통 수</div>
+          <div class="c2-buy" id="cBuy">–</div>
+          <p class="c2-buy-sub" id="cBuySub">제품과 면적을 입력해 주세요.</p>
+          <p class="c2-buy-calc" id="cBuyCalc"></p>
+        </div>
       </div>
     </div>
     <p class="calc-note">※ 도포량 출처: 각 제품 공식 PDS의 "권장 건조 도막두께 코팅당 실제 은폐력"(갤런당 평방피트 → ㎡/L 환산). 표면 상태·기법에 따라 실제 소요량은 달라질 수 있으며, 프라이머와 상도는 각각 계산하세요. (1㎡ ≈ 0.3025평)</p>
@@ -1939,23 +1950,33 @@ document.querySelector('.dm-stage').addEventListener('touchend',e=>{
 <script>
 (function(){
   var g=function(id){return document.getElementById(id);};
-  var coats=g('cCoats'),rate=g('cRate'),loss=g('cLoss'),w=g('cW'),h=g('cH'),prod=g('cProd'),src=g('cSrc');
+  var coats=g('cCoats'),rate=g('cRate'),loss=g('cLoss'),w=g('cW'),h=g('cH'),areaIn=g('cArea'),pyIn=g('cPy'),prod=g('cProd'),src=g('cSrc');
   if(!prod) return;
   var PYEONG=0.3025;                    // 1㎡ ≈ 0.3025평
+  var M2_PER_PY=1/PYEONG;               // 1평 ≈ 3.3058㎡
   var CANS=[18,4];                       // 판매 용량 (큰 통 우선)
   function num(x,d){ var v=parseFloat(x); return isFinite(v)?v:d; }
   function pyeong(m2){ return (m2*PYEONG).toFixed(1); }
   function trim(n){ return (Math.round(n*100)/100).toString(); }
+  function fmt(n){ return n>0 ? (Math.round(n*100)/100).toString() : ''; }
 
-  // 추천 소요량: 통당 시공 면적 (완성 기준, 로스 미포함)
+  // 면적(㎡)이 단일 기준값. cArea 입력칸이 원본.
+  function getArea(){ return num(areaIn&&areaIn.value,0); }
+  // 가로·세로 → ㎡·평 채우기
+  function fromWH(){ var a=num(w.value,0)*num(h.value,0); if(a>0){ areaIn.value=fmt(a); pyIn.value=fmt(a*PYEONG); } else if(!w.value&&!h.value){ /* 비우지 않음 */ } refresh(); }
+  // ㎡ 직접 입력 → 평 채우기 (가로·세로는 건드리지 않음)
+  function fromArea(){ var a=getArea(); pyIn.value = a>0 ? fmt(a*PYEONG) : ''; refresh(); }
+  // 평 입력 → ㎡ 채우기
+  function fromPy(){ var p=num(pyIn.value,0); areaIn.value = p>0 ? fmt(p*M2_PER_PY) : ''; refresh(); }
+
+  // 추천 소요량: 통당 시공 면적 (은폐력 기준, 로스 미포함)
   function renderReco(){
     var r=num(rate&&rate.value,0), n=Math.max(1,parseInt(coats&&coats.value)||2);
     var spec=g('cRecoSpec'), box=g('cRecoCards');
     if(!(r>0) || !prod.value){ spec.textContent='제품을 선택하면 통당 시공 면적을 보여드립니다'; box.innerHTML=''; return; }
-    var perL=r/n;                        // 1L당 완성 시공 면적
-    spec.textContent=trim(perL)+'㎡/L · '+n+'회 완성 기준';
+    spec.textContent=trim(r)+'㎡/L · '+n+'회 도포 기준';
     box.innerHTML=CANS.map(function(s){
-      var m2=perL*s;
+      var m2=r*s;
       return '<div class="c2-rc"><div class="cap">'+s+'L 1통</div>'
            +'<div class="val">≒ '+m2.toFixed(0)+'<small> ㎡</small></div>'
            +'<div class="py">약 '+pyeong(m2)+'평</div></div>';
@@ -1964,16 +1985,14 @@ document.querySelector('.dm-stage').addEventListener('touchend',e=>{
 
   // 구매 통 수 계산
   function calc(){
-    var ww=num(w&&w.value,0), hh=num(h&&h.value,0), area=(ww>0&&hh>0)?ww*hh:0;
+    var area=getArea();
     var n=Math.max(1,parseInt(coats&&coats.value)||2), r=num(rate&&rate.value,0), ls=Math.max(0,num(loss&&loss.value,5));
     g('cLossShow').textContent=ls+'%';
-    g('cAreaVal').textContent = area>0 ? trim(area) : '–';
-    g('cPyeong').textContent = area>0 ? ('약 '+pyeong(area)+'평') : '약 – 평';
 
     var buy=g('cBuy'), sub=g('cBuySub'), cl=g('cBuyCalc');
-    if(!(area>0)||!(r>0)){ buy.textContent='–'; sub.textContent=(!prod.value?'제품과 벽 크기를 입력해 주세요.':'가로·세로(m)를 입력해 주세요.'); cl.textContent=''; return; }
+    if(!(area>0)||!(r>0)){ buy.textContent='–'; sub.textContent=(!prod.value?'제품과 면적을 입력해 주세요.':'면적(가로·세로 / ㎡ / 평)을 입력해 주세요.'); cl.textContent=''; return; }
 
-    var perM2=n/r;                        // ㎡당 필요 도료(L)
+    var perM2=1/r;                        // ㎡당 필요 도료(L) — 은폐력 기준
     var need=area*perM2*(1+ls/100);       // 로스 포함 총 필요량
     // 큰 통 우선 그리디, 마지막 통은 올림
     var rem=need, parts=[], purchased=0;
@@ -2000,7 +2019,10 @@ document.querySelector('.dm-stage').addEventListener('touchend',e=>{
     renderReco(); calc();
   }
   function refresh(){ renderReco(); calc(); }
-  [w,h,coats,rate,loss].forEach(function(x){ if(x) x.addEventListener('input',refresh); });
+  [w,h].forEach(function(x){ if(x) x.addEventListener('input',fromWH); });
+  if(areaIn) areaIn.addEventListener('input',fromArea);
+  if(pyIn) pyIn.addEventListener('input',fromPy);
+  [coats,rate,loss].forEach(function(x){ if(x) x.addEventListener('input',refresh); });
   if(prod) prod.addEventListener('change',onProd);
   refresh();
 })();
