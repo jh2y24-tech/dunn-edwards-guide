@@ -1360,7 +1360,7 @@
               <option value="8.9|2|325~400">DECOGLO 데코글로</option>
               <option value="8.0|2|300~350|g,f|95000,409000">ACRI-BUILD 아크리빌드</option>
               <option value="9.8|2|375~425|g|147000">ENDURA-COAT 엔듀라코트</option>
-              <option value="8.6|2|325~375|g|121000">ENDURACAT 엔듀라캣 (사전촉매 에폭시)</option>
+              <option value="9.5|2|350~425|g|121000">ENDURACAT 엔듀라캣 (사전촉매 에폭시)</option>
             </optgroup>
             <optgroup label="프라이머 (기본 1회)">
               <option value="9.2|1|350~400">DECOPRIME 데코프라임</option>
@@ -1612,6 +1612,13 @@ const PRODUCTS = [
    feats:["금속 직접 도포(DTM) 가능","우수한 내부식성","급속 건조","NACE/AMPP 전문 기술 지원"],
    use:"금속 · 석조 · 건식벽 · 목재 (경량 산업)",
    sheens:["계란광","반광택","유광"]},
+  {cat:"industrial",catLabel:"산업 · 금속",name:"ENDURACAT 엔듀라캣",code:"ENPX50",tier:"산업 유지보수",tierClass:"pro",
+   homepage:"https://www.dunnedwards.com/product/enduracat/",
+   type:"수성 아크릴 에폭시 · 사전 촉매화 · 내부용 반광 · 최저 VOC",
+   desc:"VOC가 매우 적고 사전 촉매화된 고성능 내부용 수성 단일 성분 아크릴 에폭시. 뛰어난 내구성과 화학적 저항성이 필요한 병원·학교·호텔·카페 등 유지관리 요구가 많은 내부 공간에 적합합니다.",
+   feats:["금속 직접 도포(DTM) 가능","뛰어난 화학·얼룩 저항력","사상균·흰곰팡이 저항성(방부제 포함)","우수한 접착력(강철 5B)·급속 건조","최저 VOC 50 g/L·물로 청소","은폐력 약 350~425 ft²/gal(코팅당)·권장 2회"],
+   use:"내부 금속 · 목재 · 건식벽 · 석조 (병원·학교·호텔·상업)",
+   sheens:["반광택"]},
   // WATERPROOFING
   {cat:"waterproof",catLabel:"방수 · 기능성",name:"DAMPLOCK 덤프록",code:"DAMP",tier:"방수 코팅",tierClass:"pro",
    type:"수성 아크릴 방수 페인트 · 저 VOC · 저취 · 즉시 사용",
@@ -1796,6 +1803,29 @@ const PRODUCT_DOCS={"ULGM00":["img/asset-c7a94ee2a1.webp","img/asset-9714df39c2.
 "BRPR00":["img/asset-ef0acf2a5b.webp","img/asset-662d9266da.webp"],
 "ENCT":["img/asset-663fd63057.webp","img/asset-27951cc0c4.webp","img/asset-c04b923199.webp","img/asset-4f6f605036.webp","img/asset-b7caee1616.webp","img/asset-970985eb77.webp"]};
 const PRODUCT_THUMBS={"UDECK":"img/asset-e637607b47.webp","UFLR":"img/asset-4eb027d678.webp","MARM":"img/asset-d3291b0791.webp","INSU":"img/asset-1b91d95d48.webp","ORIG":"img/asset-0e56beebbc.webp","CSEAL":"img/asset-8619af17b1.webp","DAMP":"img/asset-3d673ffaec.webp","EVER":"img/asset-c741370ced.webp","SPMA30":"img/asset-32dcab33a3.webp","SWLL":"img/asset-5c9a66e5e0.webp","EVSH":"img/asset-a6201038b8.webp","ACBL10":"img/asset-2e1768db12.jpg","ASHL":"img/asset-2961468dbe.jpg","DGLO30":"img/asset-a48d0ef2bd.webp","VNPR00":"img/asset-1a31f77131.webp","BIPR00":"img/asset-b1e7b64f46.webp","DCPR00":"img/asset-811f9f1e2c.webp","UGPR00":"img/asset-b67d0e8c13.jpg","BRPR00":"img/asset-f3b2394463.webp","ENCT":"img/asset-43ab4081f0.webp"};
+/* 제품 공식 캔 이미지 (우선 적용) — img/ 폴더에 아래 파일명으로 업로드 */
+const PRODUCT_IMAGES={
+  "EVER":"img/de-everest.png",
+  "SPMA30":"img/de-suprema.png",
+  "SWLL":"img/de-spartawall.png",
+  "EVSH":"img/de-evershield.png",
+  "ASHL":"img/de-aristoshield.png",
+  "ACBL10":"img/de-acri-build.png",
+  "DGLO30":"img/de-decoglo.png",
+  "VNPR00":"img/de-vinylastic-premium.png",
+  "BIPR00":"img/de-block-it-premium.png",
+  "DCPR00":"img/de-decoprime.png",
+  "UGPR00":"img/de-ultra-grip-premium.png",
+  "BRPR00":"img/de-bloc-rust-premium.png",
+  "EZPR00":"img/de-ez-prime-premium.png",
+  "MOLD":"img/de-zinsser-mold-killing.png",
+  "LOCK":"img/de-lock-down.png",
+  "FLTX":"img/de-floor-tex.png",
+  "EPXS":"img/de-epoxy-seal.png",
+  "MARMB":"img/de-masters-armor-partb.png",
+  "UDST":"img/de-ultradeck-timber-stain.png",
+  "ENPX50":"img/de-enduracat.png"
+};
 
 /* ---------------- RENDER PRODUCTS ---------------- */
 const grid = document.getElementById('grid');
@@ -1810,7 +1840,7 @@ function renderProducts(filter){
     el.id = 'prod-'+p.code;
     const docs = PRODUCT_DOCS[p.code] || [];
     const thumb = PRODUCT_THUMBS[p.code] || docs[0] || '';
-    const headerImg = p.titleImg || PRODUCT_THUMBS[p.code] || '';
+    const headerImg = PRODUCT_IMAGES[p.code] || p.titleImg || PRODUCT_THUMBS[p.code] || '';
     const docHtml = docs.length ? `
       <div class="docpreview" data-code="${p.code}" role="button" tabindex="0" aria-label="${p.name} 제품 자료 보기">
         <img class="dp-thumb" loading="lazy" src="${thumb}" alt="${p.name} 자료 미리보기">
