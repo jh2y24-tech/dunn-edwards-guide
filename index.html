@@ -399,6 +399,80 @@
     body{background:#fff}
   }
 </style>
+<style id="de-search-style">
+/* ── 통합 검색 (페인팅 가이드 전문 카드 아래) ── */
+#painting-guide,#space-guide,#reco,#apply,#primer,#sheen,#lineup,#calc,#faq,#pgr{scroll-margin-top:76px}
+.srch{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 22px 50px -34px rgba(22,19,15,.42);padding:20px 22px 18px;margin:0 0 30px;position:relative}
+.srch-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.srch-eyebrow{font-size:12px;font-weight:800;letter-spacing:.16em;color:var(--orange);display:flex;align-items:center;gap:8px}
+.srch-eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px rgba(178,150,91,.28)}
+.srch-count{font-size:12px;color:var(--muted);font-weight:600}
+.srch-box{display:flex;align-items:center;gap:11px;background:#fff;border:2px solid var(--line);border-radius:14px;padding:0 12px 0 15px;height:56px;transition:border-color .15s,box-shadow .15s;cursor:text}
+.srch-box:focus-within{border-color:var(--orange);box-shadow:0 0 0 4px rgba(226,87,30,.13)}
+.srch-box svg{flex-shrink:0;color:var(--muted)}
+.srch-box:focus-within svg{color:var(--orange)}
+.srch-box input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-size:16px;font-weight:600;color:var(--ink);height:100%;-webkit-appearance:none;appearance:none}
+.srch-box input::placeholder{color:#9a9184;font-weight:500}
+.srch-box input::-webkit-search-cancel-button,.srch-box input::-webkit-search-decoration{-webkit-appearance:none;display:none}
+.srch-clear{flex-shrink:0;width:28px;height:28px;border-radius:50%;border:0;background:#EFEAE0;color:var(--ink-soft);font-size:13px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.srch-clear:hover{background:var(--line)}
+.srch-clear[hidden]{display:none}
+.srch-help{font-size:12.5px;color:var(--muted);margin:9px 2px 0;line-height:1.6}
+.srch-chip-row{margin-top:13px}
+.srch-chip-label{font-size:12px;font-weight:800;color:var(--muted);margin:0 2px 7px;letter-spacing:.02em}
+.srch-chips{display:flex;flex-wrap:wrap;gap:7px}
+.srch-chip{border:1.5px solid var(--line);background:var(--paper);color:var(--ink-soft);font:inherit;font-size:13px;font-weight:700;padding:7px 13px;border-radius:999px;cursor:pointer;transition:.15s;line-height:1.3}
+.srch-chip:hover{border-color:var(--orange);color:var(--orange);background:#fff}
+.srch-chip.prod{background:#F6F0E2;border-color:var(--gold);color:var(--gold-dark)}
+.srch-chip.prod:hover{border-color:var(--orange);color:var(--orange);background:#fff}
+.srch-out{margin-top:16px}
+.srch-out:empty{display:none}
+.srch-status{font-size:13px;color:var(--ink-soft);font-weight:800;margin:2px 2px 8px}
+.srch-note{font-size:12.5px;color:var(--ink-soft);background:#fbeee6;border:1px solid #f3d4c1;border-radius:10px;padding:8px 12px;margin:0 0 9px;line-height:1.6}
+.srch-note b{color:var(--orange-dark)}
+.srch-secttl{font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--muted);margin:16px 2px 7px;display:flex;align-items:center;gap:9px}
+.srch-secttl:first-of-type{margin-top:4px}
+.srch-secttl::after{content:'';flex:1;height:1px;background:var(--line)}
+.srch-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.srch-item{display:flex;align-items:flex-start;gap:12px;width:100%;text-align:left;font:inherit;color:inherit;background:#fff;border:1px solid var(--line);border-radius:13px;padding:12px 13px;cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .15s}
+.srch-item:hover,.srch-item:focus-visible{border-color:var(--gold);box-shadow:0 14px 30px -18px rgba(22,19,15,.4);outline:0}
+.srch-item:active{transform:scale(.995)}
+.srch-thumb{flex-shrink:0;width:58px;height:58px;border-radius:11px;background:var(--paper);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.srch-thumb img{width:100%;height:100%;object-fit:cover}
+.srch-thumb.prodimg img{object-fit:contain;padding:3px}
+.srch-badge{font-size:11px;font-weight:900;letter-spacing:-.02em;color:#fff;background:var(--c,var(--ink));width:100%;height:100%;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.25;padding:3px}
+.srch-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.srch-name{font-weight:800;font-size:15px;color:var(--ink);letter-spacing:-.02em;line-height:1.35;word-break:keep-all}
+.srch-sub{font-size:12.5px;color:var(--muted);line-height:1.45}
+.srch-step{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:800;color:var(--c,var(--ink));margin-top:3px}
+.srch-step::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--c,var(--ink))}
+.srch-why{font-size:12.5px;color:var(--ink-soft);line-height:1.55;margin-top:5px;padding-top:6px;border-top:1px dashed var(--line)}
+.srch-why .ok{color:var(--good);font-weight:900;margin-right:3px}
+.srch-why .src{color:var(--muted);font-size:11.5px}
+.srch-why .rel{color:var(--orange-dark);font-weight:800;font-size:11.5px}
+.srch-miss{font-size:12px;color:var(--muted);margin-top:3px}
+.srch-miss .no{color:#C0392B;font-weight:900}
+.srch-go{flex-shrink:0;align-self:center;color:var(--muted);font-size:20px;line-height:1}
+.srch-item:hover .srch-go{color:var(--orange)}
+.srch mark{background:#FFE8A8;color:inherit;border-radius:3px;padding:0 1px}
+.srch-more{display:block;width:100%;margin-top:9px;border:1.5px dashed var(--line);background:var(--paper);color:var(--ink-soft);font:inherit;font-size:13px;font-weight:800;padding:10px;border-radius:12px;cursor:pointer}
+.srch-more:hover{border-color:var(--orange);color:var(--orange)}
+.srch-empty{text-align:center;padding:20px 8px 8px;color:var(--ink-soft);font-size:14px;line-height:1.75}
+.srch-empty b{color:var(--ink)}
+.srch-empty .srch-chips{justify-content:center;margin-top:11px}
+.srch-flash{animation:srchFlash 2s ease-out}
+tr.srch-flash td{animation:srchBg 2s ease-out}
+@keyframes srchFlash{0%{box-shadow:0 0 0 0 rgba(226,87,30,0)}15%{box-shadow:0 0 0 4px rgba(226,87,30,.9)}100%{box-shadow:0 0 0 0 rgba(226,87,30,0)}}
+@keyframes srchBg{0%,60%{background:#FFE8A8}100%{background:transparent}}
+@media (max-width:860px){.srch-list{grid-template-columns:1fr}}
+@media (max-width:480px){
+  .srch{padding:16px 14px 15px;border-radius:16px}
+  .srch-box{height:52px}
+  .srch-thumb{width:52px;height:52px}
+}
+@media print{.srch{display:none}}
+</style>
+
 </head>
 <body>
 
@@ -592,6 +666,50 @@
       </div>
       <div class="pgr-prog"><i id="pgr-prog"></i></div>
     </div>
+    <!-- ── 통합 검색 ── -->
+    <div class="srch" id="deSearch" role="search">
+      <div class="srch-head">
+        <span class="srch-eyebrow">제품 · 용도 · 상황 검색</span>
+        <span class="srch-count" id="srchTotal"></span>
+      </div>
+      <label class="srch-box" for="srchInput">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input id="srchInput" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="제품명 · 용도 · 상황 검색 (예: 에베레스트, 베란다 곰팡이)" aria-controls="srchResults" aria-label="제품명, 용도, 상황으로 검색">
+        <button type="button" id="srchClear" class="srch-clear" aria-label="검색어 지우기" hidden>✕</button>
+      </label>
+      <div class="srch-help">오타가 있어도 괜찮아요. 영문 제품명을 한글로(예: 울트라그립, 익스퀴짓) 입력해도, 초성(예: ㅍㄹㅇㅁ)으로도 찾을 수 있습니다. 제품·공간별 추천·프라이머 표·광택·시공 가이드·Q&A를 한 번에 찾아드려요.</div>
+      <div class="srch-chip-row">
+        <div class="srch-chip-label">이런 상황은?</div>
+        <div class="srch-chips">
+          <button type="button" class="srch-chip" data-q="곰팡이">곰팡이</button>
+          <button type="button" class="srch-chip" data-q="베란다 벽">베란다 벽</button>
+          <button type="button" class="srch-chip" data-q="외벽">외벽</button>
+          <button type="button" class="srch-chip" data-q="철제 난간 녹">철제 난간 녹</button>
+          <button type="button" class="srch-chip" data-q="가구 칠하기">가구 칠하기</button>
+          <button type="button" class="srch-chip" data-q="문 몰딩">문 · 몰딩</button>
+          <button type="button" class="srch-chip" data-q="천장">천장</button>
+          <button type="button" class="srch-chip" data-q="마루 코팅">마루 코팅</button>
+          <button type="button" class="srch-chip" data-q="지하실 방수">지하실 방수</button>
+          <button type="button" class="srch-chip" data-q="추운 날 시공">추운 날 시공</button>
+          <button type="button" class="srch-chip" data-q="광택 선택">광택 선택</button>
+          <button type="button" class="srch-chip" data-q="아연도금">아연도금</button>
+        </div>
+      </div>
+      <div class="srch-chip-row">
+        <div class="srch-chip-label">제품 바로 찾기</div>
+        <div class="srch-chips">
+          <button type="button" class="srch-chip prod" data-q="EXQUISITE">EXQUISITE</button>
+          <button type="button" class="srch-chip prod" data-q="EVEREST">EVEREST</button>
+          <button type="button" class="srch-chip prod" data-q="SUPREMA">SUPREMA</button>
+          <button type="button" class="srch-chip prod" data-q="ULTRA-GRIP">ULTRA-GRIP</button>
+          <button type="button" class="srch-chip prod" data-q="EVERSHIELD">EVERSHIELD</button>
+          <button type="button" class="srch-chip prod" data-q="ARISTOSHIELD">ARISTOSHIELD</button>
+          <button type="button" class="srch-chip prod" data-q="DAMPLOCK">DAMPLOCK</button>
+        </div>
+      </div>
+      <div class="srch-out" id="srchResults" aria-live="polite"></div>
+    </div>
+
     <div class="pg-filters" id="pg-filters">
       <button class="pg-chip active" data-cat="all">전체 6</button>
       <button class="pg-chip" data-cat="시공">시공 방법</button>
@@ -2241,5 +2359,748 @@ dmStage.addEventListener('touchend',e=>{
   if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',init); } else { init(); }
 })();
 </script>
+<script id="de-search-script">
+(function () {
+  'use strict';
+  var root = document.getElementById('deSearch');
+  if (!root) return;
+  var $input = document.getElementById('srchInput');
+  var $clear = document.getElementById('srchClear');
+  var $out = document.getElementById('srchResults');
+  var $total = document.getElementById('srchTotal');
+
+  /* ===== 1. 문자 처리 ===== */
+  var CHO = 'ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ'.split('');
+  var JUNG = 'ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ'.split('');
+  var JONG = ['', 'ㄱ', 'ㄲ', 'ㄳ', 'ㄴ', 'ㄵ', 'ㄶ', 'ㄷ', 'ㄹ', 'ㄺ', 'ㄻ', 'ㄼ', 'ㄽ', 'ㄾ', 'ㄿ', 'ㅀ', 'ㅁ', 'ㅂ', 'ㅄ', 'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'];
+  function norm(s) {
+    return String(s == null ? '' : s).normalize('NFC').toLowerCase().replace(/[+＋]/g, 'plus')
+      .replace(/[^a-z0-9\u3131-\u318e\uac00-\ud7a3]/g, '');
+  }
+  function jamo(s) {
+    var o = '';
+    for (var i = 0; i < s.length; i++) {
+      var c = s.charCodeAt(i) - 0xac00;
+      o += (c >= 0 && c < 11172) ? CHO[(c / 588) | 0] + JUNG[((c % 588) / 28) | 0] + JONG[c % 28] : s.charAt(i);
+    }
+    return o;
+  }
+  function choOf(s) {
+    var o = '';
+    for (var i = 0; i < s.length; i++) {
+      var c = s.charCodeAt(i) - 0xac00;
+      o += (c >= 0 && c < 11172) ? CHO[(c / 588) | 0] : s.charAt(i);
+    }
+    return o;
+  }
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; });
+  }
+  function txt(el) { return el ? (el.textContent || '').replace(/\s+/g, ' ').trim() : ''; }
+  function osa(a, b, max) {
+    var la = a.length, lb = b.length;
+    if (Math.abs(la - lb) > max) return max + 1;
+    var d = [], i, j;
+    for (i = 0; i <= la; i++) { d[i] = [i]; }
+    for (j = 1; j <= lb; j++) d[0][j] = j;
+    for (i = 1; i <= la; i++) {
+      for (j = 1; j <= lb; j++) {
+        var cost = a.charAt(i - 1) === b.charAt(j - 1) ? 0 : 1;
+        d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + cost);
+        if (i > 1 && j > 1 && a.charAt(i - 1) === b.charAt(j - 2) && a.charAt(i - 2) === b.charAt(j - 1)) {
+          d[i][j] = Math.min(d[i][j], d[i - 2][j - 2] + 1);
+        }
+      }
+    }
+    return d[la][lb];
+  }
+  // 한 글자 한글 검색어(문·벽·녹·붓)는 '단어로 쓰인 경우'만 인정 (문의·주문 등 오탐 방지)
+  function oneChar(t) { return t.length === 1 && /[\uac00-\ud7a3]/.test(t); }
+  function wordHit(raw, t) { return new RegExp('(^|[^가-힣a-zA-Z0-9])' + t + '(?![가-힣a-zA-Z0-9])').test(raw); }
+  function has(it, term) {
+    if (oneChar(term)) return wordHit(it.raw, term);
+    if (/^[a-z]+$/.test(term) && term.length <= 5) return new RegExp('(^|[^a-z0-9])' + term + '([^a-z0-9]|$)', 'i').test(it.raw);
+    var text = it.n, i = text.indexOf(term);
+    while (i >= 0) {
+      if (!(term.indexOf('흡수') === 0 && text.charAt(i - 1) === '비')) return true;
+      i = text.indexOf(term, i + 1);
+    }
+    return false;
+  }
+  function rxFor(terms) {
+    var pats = [];
+    (terms || []).forEach(function (t) {
+      if (!t) return;
+      pats.push(t.split('').map(function (c) { return c.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }).join('[\\s\\-_.·,/()+®™]*'));
+    });
+    if (!pats.length) return null;
+    try { return new RegExp('(' + pats.join('|') + ')', 'ig'); } catch (e) { return null; }
+  }
+  function hl(raw, terms) {
+    var re = rxFor(terms);
+    if (!re) return esc(raw);
+    var out = '', last = 0, m;
+    while ((m = re.exec(raw))) {
+      if (!m[0]) { re.lastIndex++; continue; }
+      out += esc(raw.slice(last, m.index)) + '<mark>' + esc(m[0]) + '</mark>';
+      last = m.index + m[0].length;
+    }
+    return out + esc(raw.slice(last));
+  }
+  function snippet(raw, terms, n) {
+    var re = rxFor(terms), m = re ? re.exec(raw) : null;
+    if (!m) return hl(raw.length > n ? raw.slice(0, n) + '…' : raw, terms);
+    var s = Math.max(0, m.index - 16), e = Math.min(raw.length, m.index + m[0].length + (n - 16));
+    return (s > 0 ? '…' : '') + hl(raw.slice(s, e), terms) + (e < raw.length ? '…' : '');
+  }
+
+  /* ===== 2. 같은 말 · 관련어 · 불용어 (도료/시공 분야) ===== */
+  var SAME = [
+    // 공간·부위
+    ['욕실', '화장실', '샤워실', '샤워장', '목욕탕', 'bathroom'],
+    ['주방', '부엌', '키친', 'kitchen'],
+    ['싱크대', '싱크'],
+    ['베란다', '발코니', '배란다', 'balcony', 'veranda'],
+    ['거실', 'livingroom', '리빙룸'],
+    ['침실', '안방', 'bedroom'],
+    ['아이방', '어린이방', '아기방', '키즈룸', 'kidsroom'],
+    ['현관', '현관문'],
+    ['외벽', '외장', '외벽면'],
+    ['외부', '외부용', '실외', '야외', 'exterior', 'outdoor'],
+    ['내부', '내부용', '실내', 'interior', 'indoor'],
+    ['천장', '천정', 'ceiling'],
+    ['벽면', '벽', '벽체', 'wall'],
+    ['벽지', '도배', '도배지', 'wallpaper'],
+    ['바닥', '바닥면', 'floor', '플로어'],
+    ['지붕', '평지붕', 'roof'],
+    ['지하실', '지하', '지하층', '반지하', 'basement'],
+    ['주차장', '차고', '주차', 'garage'],
+    ['카페', 'cafe', '커피숍'],
+    ['상가', '상업공간', '매장', '가게', '상점', 'retail'],
+    ['아파트', 'apartment', 'apt'],
+    ['연립주택', '연립', '빌라', '다세대'],
+    ['아트월', '포인트벽', '포인트월', '액센트월', 'accentwall'],
+    ['붙박이장', '붙박이', '빌트인장'],
+    ['방화문', 'firedoor'],
+    ['난간', '핸드레일', 'railing', 'guardrail'],
+    ['셔터', 'shutter'],
+    ['도어', 'door', '문', '문짝', '방문'],
+    ['가구', 'furniture'],
+    ['캐비닛', '캐비넷', 'cabinet', '수납장'],
+    ['마루', '원목마루', '마루바닥', 'woodfloor'],
+    ['데크', 'deck', 'wooddeck'],
+    ['목재', '목조', '나무', '우드', 'wood', '원목'],
+    ['하드우드', 'hardwood'],
+    ['소프트우드', 'softwood'],
+    ['금속', '철재', '철제', '스틸', '메탈', 'metal', 'steel'],
+    ['아연도금', '아연', '갈바', '갈바륨', '함석', 'galvanized', 'galva'],
+    ['콘크리트', '콘크', 'concrete'],
+    ['시멘트', 'cement'],
+    ['치장벽토', '스타코', 'stucco'],
+    ['드라이월', '건식벽', '석고보드', 'drywall', 'gypsum'],
+    ['벽돌', 'brick'],
+    ['블록', '콘크리트블록', 'block', 'cmu'],
+    // 도료·시공
+    ['프라이머', 'primer', '프라이마', '하도', '하도제', '밑칠', '바탕칠', '초벌', '프라이밍', 'priming', '프라임'],
+    ['셀프프라이밍', '자체프라이밍', '자체바탕칠', 'selfpriming'],
+    ['방수', '방수제', '투명방수', 'waterproof', 'waterproofing', '워터프루프'],
+    ['곰팡이', '곰팡', 'mold', 'mould', 'mildew'],
+    ['곰팡이억제', '방곰팡이', '곰팡이방지'],
+    ['곰팡이살균', '살균', '몰드킬링', 'moldkilling'],
+    ['라돈', 'radon'],
+    ['녹', '녹슨', '녹슬', '방청', '녹방지', '부식', 'rust', 'antirust', 'corrosion'],
+    ['에나멜', 'enamel'],
+    ['알키드', 'alkyd'],
+    ['우레탄', 'urethane'],
+    ['에폭시', 'epoxy'],
+    ['아크릴', 'acrylic'],
+    ['라텍스', 'latex'],
+    ['수성', '물성', 'waterbased'],
+    ['유성', 'oilbased'],
+    ['퍼티', 'putty', '올퍼티'],
+    ['균열', '크랙', 'crack', '갈라짐'],
+    ['백태', '백화', '백화현상', 'efflorescence'],
+    ['백악화', '초킹', '분필화', 'chalking'],
+    ['변색', '퇴색', '색바램', '탈색'],
+    ['황변', 'yellowing'],
+    ['터치업', 'touchup', '부분보수', '부분도장', '덧칠'],
+    ['스프레이', '에어리스', '분무', 'spray', 'airless'],
+    ['롤러', 'roller'],
+    ['붓', '브러시', '브러쉬', 'brush'],
+    ['도장횟수', '코팅횟수'],
+    ['보관', '저장', 'storage', '보관기한'],
+    ['폐기', '폐기물', '폐페인트', '버리는', 'disposal'],
+    ['추운', '저온', '겨울', '한겨울', '추위', '동결', '한파'],
+    ['더운', '고온', '여름', '한여름', '폭염'],
+    ['온도', '기온', 'temperature'],
+    ['세척', '세척성', '내세척성', '세정', '세정성', '물걸레', 'washable'],
+    ['오염', '얼룩', '내오염', 'stain'],
+    ['voc', '저voc', '무voc', '초저voc', 'lowvoc', 'novoc'],
+    ['무독성', 'egfree', '친환경', 'eco'],
+    ['저취', '무취', '냄새', '냄새없는', 'odorless'],
+    ['은폐력', '은폐', 'hiding', 'coverage'],
+    ['도포량', '소요량', '사용량', '필요량', '도포율'],
+    ['계산기', '계산', 'calculator', '산출'],
+    ['가이드북', '가이드전문', '전문', '가이드'],
+    // 광택
+    ['무광', '플랫', 'flat', '매트', 'matt', 'matte'],
+    ['벨벳', 'velvet'],
+    ['계란광', '에그쉘', '에그셸', 'eggshell'],
+    ['새틴', '저광', '저광택', 'satin', 'lowsheen'],
+    ['반광', '반광택', '세미글로스', 'semigloss'],
+    ['고광', '고광택', '하이글로스', 'highgloss'],
+    ['광택', '광도', 'sheen', 'gloss', '글로스']
+  ];
+  var RELATED = {
+    '누수': ['방수'], '물샘': ['방수'], '물새': ['방수'], '새는': ['방수'],
+    '몰딩': ['트림'], '문틀': ['트림'], '걸레받이': ['트림', '몰딩'], '트림': ['몰딩', '문틀'],
+    '옥상': ['지붕'], '슬라브': ['콘크리트'], '난방': [], '습기': ['방수', '곰팡이'],
+    '패치': ['퍼티'], '구멍': ['퍼티'], '울퉁불퉁': ['퍼티'], '황토': [], '결로': ['곰팡이'],
+    '더러움': ['오염', '세척'], '때': ['오염', '세척'], '손때': ['오염', '세척'],
+    '벗겨짐': ['프라이머', '백악화'], '들뜸': ['프라이머'], '박리': ['프라이머'],
+    '외벽': ['외부'], '건조': ['온도']
+  };
+  var CONTEXT_LABELS = ['욕실', '주방', '베란다', '거실', '침실', '아이방', '현관', '외부', '외벽', '내부', '천장', '벽면', '바닥', '지붕', '지하실', '주차장', '카페', '상가', '아파트', '연립주택', '싱크대', '벽지'];
+  var GENERIC = ['페인트', '도료', 'paint', 'paints', '도장', '칠', '칠하기', '칠하는', '칠할', '칠해', '바르는', '시공', '시공할', '시공하는', '시공할때', '시공방법', '시공하려면', '시공해야', '시공하나요',
+    '할때', '하는', '하려면', '해야', '하나요', '인가요', '추천', '추천해줘', '추천해주세요', '알려줘', '알려주세요', '제품', '제품추천', '방법', '용도', '사용', '사용하는', '사용할', '쓰는', '쓸', '쓸때', '써야',
+    '어떤', '어떻게', '무엇', '뭐', '뭐가', '뭘', '좋은', '필요', '필요한', '관련', '대한', '위한', '자재', '재료', '종류', '입니다', '합니다', '있나요', '있어요',
+    '때', '위', '위에', '곳', '공간', '장소', '날', '선택', '선택하는', '선택할', '고르는', '고르기', '고를', '던에드워드', '던에드', 'dunnedwards', 'dunn', 'edwards', '에', '를', '을', '의'];
+  var ONECHAR = { '벽': 1, '녹': 1, '붓': 1, '문': 1 };
+
+  var termGroup = {}, groupNorm = [], relNorm = {}, genericSet = {}, contextGroups = {};
+  SAME.forEach(function (g, gi) {
+    groupNorm[gi] = [];
+    if (CONTEXT_LABELS.indexOf(g[0]) >= 0) contextGroups[gi] = true;
+    g.forEach(function (w) {
+      var n = norm(w);
+      if (!n || (n.length < 2 && !ONECHAR[n])) return;
+      groupNorm[gi].push(n);
+      (termGroup[n] = termGroup[n] || []).push(gi);
+    });
+  });
+  Object.keys(RELATED).forEach(function (k) { if (RELATED[k].length) relNorm[norm(k)] = RELATED[k]; });
+  GENERIC.forEach(function (w) { genericSet[norm(w)] = 1; });
+
+  /* ===== 3. 색인 (페이지의 제품 데이터·카드·표·Q&A에서 직접 읽음) ===== */
+  var TYPE = {
+    prod: { label: '제품', c: '#E2571E', b: '' },
+    space: { label: '공간별 추천', c: '#8C7440', b: '공간' },
+    reco: { label: '빠른 제품 추천', c: '#E2571E', b: '추천' },
+    guide: { label: '페인팅 가이드', c: '#16130F', b: '가이드' },
+    primer: { label: '프라이머 선택표', c: '#2E7D52', b: '프라이머' },
+    sheen: { label: '광택 가이드', c: '#8C7440', b: '광택' },
+    apply: { label: '시공 가이드', c: '#16130F', b: '시공' },
+    tool: { label: '바로가기', c: '#6E665B', b: '이동' },
+    faq: { label: '고객 응대 Q&A', c: '#2E7D52', b: 'Q&A' }
+  };
+  var GROUPS = [
+    { k: 'prod', t: '제품', types: ['prod'], n: 8 },
+    { k: 'space', t: '공간 · 부위별 추천', types: ['space', 'reco'], n: 4 },
+    { k: 'guide', t: '가이드 · 기준표', types: ['guide', 'primer', 'sheen', 'apply', 'tool'], n: 5 },
+    { k: 'faq', t: '자주 묻는 질문', types: ['faq'], n: 3 }
+  ];
+  var docs = [], vocab = {}, aliasAll = [], builtSig = '';
+  function item(raw, src) { return { raw: raw, n: norm(raw), src: src || '' }; }
+  function addVocab(word, pri) {
+    var n = norm(word);
+    if (n.length < 2 || /^[0-9]+$/.test(n)) return;
+    if (!vocab[n] || vocab[n].pri < pri) vocab[n] = { pri: pri, j: jamo(n), raw: word };
+  }
+  function addWords(text, pri) { String(text).split(/[^A-Za-z0-9가-힣]+/).forEach(function (w) { if (w.length >= 2 && w.length <= 12) addVocab(w, pri); }); }
+  function parseConst(name) {
+    var key = 'const ' + name + ' = ', ss = document.getElementsByTagName('script');
+    for (var i = 0; i < ss.length; i++) {
+      var t = ss[i].textContent || '', k = t.indexOf(key);
+      if (k < 0) continue;
+      var s = k + key.length, e = t.indexOf('\n', s), str = t.slice(s, e < 0 ? t.length : e).trim();
+      if (str.charAt(str.length - 1) === ';') str = str.slice(0, -1);
+      try { return JSON.parse(str); } catch (err) { /* 다음 스크립트 */ }
+    }
+    return null;
+  }
+  function safe(fn, dflt) { try { var v = fn(); return v == null ? dflt : v; } catch (e) { return dflt; } }
+  function uniq(a) { var m = {}, o = []; a.forEach(function (x) { if (x && !m[x]) { m[x] = 1; o.push(x); } }); return o; }
+  function split(s) { return String(s || '').split(/\s*[·\/]\s*|\s*,\s*/).map(function (x) { return x.trim(); }).filter(Boolean); }
+
+  function calcKorean() {
+    var res = [];
+    var sel = document.getElementById('cProd');
+    if (!sel) return res;
+    [].forEach.call(sel.querySelectorAll('option'), function (o) {
+      var t = txt(o).replace(/\([^)]*\)/g, ' ').replace(/[®™]/g, '');
+      var en = [], ko = [];
+      t.split(/\s+/).forEach(function (w) { if (/[가-힣]/.test(w)) ko.push(w); else if (/^[A-Za-z0-9\-.]+$/.test(w)) en.push(w); });
+      if (en.length && ko.length) res.push({ en: norm(en.join('')), ko: ko });
+    });
+    return res;
+  }
+
+  function buildIndex() {
+    docs.length = 0; vocab = {}; aliasAll = [];
+    var PR = safe(function () { return PRODUCTS; }, []);
+    var rec = parseConst('REC') || {}, scenes = parseConst('SCENES') || {};
+    var calcKo = calcKorean(), koByCode = {}, usesByCode = {};
+
+    // 공간별 추천 → 한글 제품명(코드) · 제품별 용도 수집
+    Object.keys(rec).forEach(function (id) {
+      var r = rec[id];
+      (r.options || []).forEach(function (o) {
+        (o.nav || []).forEach(function (x) {
+          if (!x.code) return;
+          (koByCode[x.code] = koByCode[x.code] || []).push(x.name);
+          (usesByCode[x.code] = usesByCode[x.code] || []).push(item(o.surface + ' · ' + o.title, '공간별 추천'));
+        });
+      });
+    });
+
+    PR.forEach(function (p) {
+      var d = { type: 'prod', code: p.code, name: p.name, sub: p.catLabel + (p.tier ? ' · ' + p.tier : ''), names: [], uses: [], tags: [], body: [], order: docs.length, p: p };
+      var al = {};
+      var ascii = (p.name.match(/[A-Za-z0-9®™\-.\s]+/g) || []).join(' ');
+      var koPart = (p.name.match(/[가-힣\-]+/g) || []).join('');
+      al[norm(p.name)] = 1; al[norm(ascii)] = 1; if (koPart) al[norm(koPart)] = 1;
+      var paren = (p.name.match(/\(([^)]*)\)/) || [])[1]; if (paren) al[norm(paren)] = 1;
+      al[norm(p.code)] = 1; al[norm(p.code).replace(/0+$/, '')] = 1;
+      var pn = norm(p.name.replace(/\([^)]*\)/g, '').replace(/[가-힣]/g, ''));
+      if (!koPart) calcKo.forEach(function (c) {
+        if (c.en.length >= 4 && pn.length >= 4 && (pn.indexOf(c.en) === 0 || c.en.indexOf(pn) === 0)) {
+          al[norm(c.ko[0])] = 1; al[norm(c.ko.join(''))] = 1;
+        }
+      });
+      (koByCode[p.code] || []).forEach(function (k) { al[norm(k)] = 1; });
+      Object.keys(al).forEach(function (a) { if (a.length >= 2) { d.names.push({ n: a, raw: p.name, src: '' }); aliasAll.push(a); addVocab(a, 4); } });
+      split(p.use).forEach(function (u) { d.uses.push(item(u, '카드 주요 용도')); addWords(u, 2); });
+      (usesByCode[p.code] || []).forEach(function (u) { d.uses.push(u); addWords(u.raw, 2); });
+      [p.catLabel, p.tier].concat(split(p.type), p.sheens || []).forEach(function (t) { if (t) { d.tags.push(item(t, '카드')); addWords(t, 2); } });
+      [p.desc].concat(p.feats || []).forEach(function (t) { if (t) { d.body.push(item(t, '카드')); addWords(t, 1); } });
+      docs.push(d);
+    });
+    var prodCount = docs.length;
+
+    // 공간·부위별 추천 (주거 공간 가이드)
+    Object.keys(rec).forEach(function (id) {
+      var r = rec[id], opts = r.options || [];
+      var keys = Object.keys(scenes).filter(function (k) { return (r.zones || []).indexOf(scenes[k].zoneSet) >= 0; });
+      if (!keys.length) return;
+      var surfaces = uniq(opts.map(function (o) { return o.surface; }));
+      var d = { type: 'space', id: id, sceneKeys: keys, name: surfaces.slice(0, 2).join(' · ') + ' — ' + r.zone,
+        sub: keys.map(function (k) { return scenes[k].label; }).join(' · '), names: [], uses: [], tags: [], body: [], order: docs.length };
+      d.tags.push(item(r.zone, '공간별 추천'));
+      keys.forEach(function (k) { d.tags.push(item(scenes[k].label, '공간 유형')); });
+      surfaces.forEach(function (s) { d.tags.push(item(s, '공간별 추천')); });
+      uniq(opts.map(function (o) { return o.title; })).forEach(function (t) { d.tags.push(item(t, '공간별 추천')); });
+      uniq(opts.map(function (o) { return o.product; })).forEach(function (t) { d.uses.push(item(t, '공간별 추천')); addWords(t, 2); });
+      opts.forEach(function (o) { String(o.detail || '').split(/\n/).forEach(function (l) { l = l.trim(); if (l) { d.body.push(item(l, '공간별 추천')); addWords(l, 1); } }); });
+      d.tags.forEach(function (t) { addWords(t.raw, 2); });
+      docs.push(d);
+    });
+
+    // 빠른 제품 추천
+    var RECO_ = safe(function () { return RECO; }, {});
+    Object.keys(RECO_).forEach(function (k) {
+      var r = RECO_[k], btn = document.querySelector('#reco-btns .reco-btn[data-r="' + k + '"]');
+      var d = { type: 'reco', key: k, el: btn, name: r.title, sub: '빠른 제품 추천기', names: [], uses: [], tags: [item(r.title, '제품 추천'), item(txt(btn), '제품 추천')], body: [], order: docs.length };
+      (r.picks || []).forEach(function (p) { d.uses.push(item(p.n, '제품 추천')); d.body.push(item(p.d, '제품 추천')); addWords(p.n, 2); addWords(p.d, 1); });
+      addWords(r.title, 2); docs.push(d);
+    });
+
+    // 페인팅 가이드 카드
+    [].forEach.call(document.querySelectorAll('.pg-card'), function (c) {
+      var d = { type: 'guide', el: c, name: txt(c.querySelector('.pg-meta b')), sub: txt(c.querySelector('.pg-meta small')), img: c.querySelector('.pg-th img'),
+        names: [], uses: [], tags: [], body: [], order: docs.length };
+      d.tags.push(item(d.name, '페인팅 가이드'), item(d.sub, '페인팅 가이드'), item(txt(c.querySelector('.pg-badge')), '페인팅 가이드'));
+      d.body.push(item(txt(c.querySelector('.pg-sum')), '페인팅 가이드'));
+      addWords(d.name, 2); addWords(d.body[0].raw, 1); docs.push(d);
+    });
+
+    // 프라이머 선택표
+    [].forEach.call(document.querySelectorAll('#primer tbody tr'), function (tr) {
+      var td = tr.querySelectorAll('td'); if (td.length < 2) return;
+      var d = { type: 'primer', el: tr, name: txt(td[0]), sub: '권장: ' + txt(td[1]), names: [], uses: [], tags: [item(txt(td[0]), '프라이머 선택표')], body: [item(txt(td[1]), '프라이머 선택표')], order: docs.length };
+      if (td[2]) d.body.push(item(txt(td[2]), '프라이머 선택표'));
+      d.tags.push(item(txt(document.querySelector('#primer h2')) || '표면별 권장 프라이머', '프라이머 선택표'));
+      d.body.forEach(function (b) { addWords(b.raw, 1); }); addWords(d.name, 2); docs.push(d);
+    });
+
+    // 광택 단계
+    [].forEach.call(document.querySelectorAll('#sheen .sheen-card'), function (c) {
+      var d = { type: 'sheen', el: c, name: txt(c.querySelector('h4')) + ' ' + txt(c.querySelector('.en')), sub: txt(c.querySelector('p')), names: [], uses: [], tags: [item(txt(c.querySelector('h4')), '광택 가이드'), item(txt(c.querySelector('.en')), '광택 가이드')], body: [item(txt(c.querySelector('p')), '광택 가이드')], order: docs.length };
+      d.tags.push(item(txt(document.querySelector('#sheen h2')) || '광택 단계 이해하기', '광택 가이드'));
+      split(txt(c.querySelector('.use'))).forEach(function (u) { d.uses.push(item(u, '광택 가이드')); addWords(u, 2); });
+      addWords(d.name, 2); addWords(d.sub, 1); docs.push(d);
+    });
+
+    // 시공 가이드
+    [].forEach.call(document.querySelectorAll('#apply .gcard'), function (c) {
+      var d = { type: 'apply', el: c, name: txt(c.querySelector('h4')), sub: '', names: [], uses: [], tags: [item(txt(c.querySelector('h4')), '시공 가이드')], body: [], order: docs.length };
+      d.tags.push(item(txt(document.querySelector('#apply h2')) || '표면 준비 · 온도 · 스프레이', '시공 가이드'));
+      [].forEach.call(c.querySelectorAll('li, p, .temp-bar > div'), function (x) { var t = txt(x); if (t) { d.body.push(item(t, '시공 가이드')); addWords(t, 1); } });
+      addWords(d.name, 2); docs.push(d);
+    });
+
+    // 바로가기
+    [['도포량 계산기', '면적을 넣으면 필요한 통 수·가격 계산', 'calc', ['도포량 계산기', '소요량 계산', '면적 평 ㎡', '통 수', '가격', '로스율']],
+     ['페인팅 가이드 전문 (펼침 보기)', '가이드북 전체를 넘겨보기 · 인쇄 · 전체화면', 'pgr', ['페인팅 가이드 전문', '가이드북', '목차', '인쇄', '전체화면']],
+     ['제품 라인업 전체 보기', '용도별 전체 제품 카드', 'lineup', ['제품 라인업', '전체 제품', '용도별 제품']]
+    ].forEach(function (t) {
+      var d = { type: 'tool', target: t[2], name: t[0], sub: t[1], names: [], uses: [], tags: t[3].map(function (x) { return item(x, '바로가기'); }), body: [], order: docs.length };
+      d.tags.unshift(item(t[0], '바로가기')); addWords(t[0], 2); docs.push(d);
+    });
+
+    // 고객 응대 Q&A
+    [].forEach.call(document.querySelectorAll('#faqList .faq-item'), function (f) {
+      var q = txt(f.querySelector('.faq-q')); if (!q) return;
+      var d = { type: 'faq', el: f, name: q, sub: '', names: [], uses: [], tags: [item(q, 'Q&A')], body: [item(txt(f.querySelector('.faq-a .inner')), 'Q&A')], order: docs.length };
+      addWords(q, 2); addWords(d.body[0].raw, 1); docs.push(d);
+    });
+
+    SAME.forEach(function (g) { g.forEach(function (w) { addVocab(w, 3); }); });
+    Object.keys(relNorm).forEach(function (k) { addVocab(k, 3); });
+    var cnt = {}; docs.forEach(function (d) { cnt[d.type] = (cnt[d.type] || 0) + 1; });
+    if ($total) $total.textContent = '제품 ' + prodCount + '개 · 공간 ' + (cnt.space || 0) + ' · 가이드 ' + ((cnt.guide || 0) + (cnt.primer || 0) + (cnt.sheen || 0) + (cnt.apply || 0)) + ' · Q&A ' + (cnt.faq || 0);
+    builtSig = signature();
+  }
+  function signature() {
+    var PR = safe(function () { return PRODUCTS; }, []);
+    return PR.length + '|' + (PR[0] ? PR[0].code : '') + '|' + (PR.length ? PR[PR.length - 1].code : '') + '|' + document.querySelectorAll('#faqList .faq-item').length;
+  }
+  function ensureIndex() { if (signature() !== builtSig) buildIndex(); }
+
+  /* ===== 4. 매칭 ===== */
+  function scoreDoc(doc, t) {
+    var best = null, i, it;
+    function take(sc, kind, x) { if (!best || sc > best.score) best = { score: sc, kind: kind, item: x }; }
+    for (i = 0; i < doc.names.length; i++) {
+      it = doc.names[i];
+      if (it.n === t.t) take(120, 'name', it);
+      else if (it.n.indexOf(t.t) === 0) take(105, 'name', it);
+      else if (!t.prefix && it.n.indexOf(t.t) >= 0) take(t.kind === 'self' ? 90 : 55, 'name', it);
+    }
+    if (t.prefix) return best;
+    for (i = 0; i < doc.uses.length; i++) if (has(doc.uses[i], t.t)) take(70, 'use', doc.uses[i]);
+    for (i = 0; i < doc.tags.length; i++) if (has(doc.tags[i], t.t)) take(doc.tags[i].n.indexOf(t.t) === 0 ? (i === 0 ? 92 : 85) : 75, 'tag', doc.tags[i]);
+    for (i = 0; i < doc.body.length; i++) if (has(doc.body[i], t.t)) take(40, 'body', doc.body[i]);
+    return best;
+  }
+  function bestFor(doc, tok) {
+    var best = null;
+    tok.terms.forEach(function (t) {
+      var s = scoreDoc(doc, t);
+      if (!s) return;
+      var v = s.score * t.w;
+      if (!best || v > best.v) best = { v: v, kind: s.kind, item: s.item, term: t };
+    });
+    return best;
+  }
+  function hitsAny(terms) {
+    for (var i = 0; i < docs.length; i++) for (var j = 0; j < terms.length; j++) if (scoreDoc(docs[i], terms[j])) return true;
+    return false;
+  }
+  function termsFor(nt, raw, kind) {
+    var map = {};
+    function put(t, w, k, label) { if (!map[t] || map[t].w < w) map[t] = { t: t, w: w, kind: k, label: label }; }
+    put(nt, kind === 'corrected' ? .9 : 1, kind || 'self', raw);
+    (termGroup[nt] || []).forEach(function (gi) { groupNorm[gi].forEach(function (m) { put(m, kind === 'corrected' ? .85 : .95, 'same', SAME[gi][0]); }); });
+    (relNorm[nt] || []).forEach(function (r) {
+      var rn = norm(r);
+      put(rn, .5, 'related', r);
+      (termGroup[rn] || []).forEach(function (gi) { groupNorm[gi].forEach(function (m) { put(m, .5, 'related', r); }); });
+    });
+    return Object.keys(map).map(function (k) { return map[k]; });
+  }
+  function isContext(nt) { return (termGroup[nt] || []).some(function (gi) { return contextGroups[gi]; }); }
+  function known(nt) { return !!(termGroup[nt] || vocab[nt] || relNorm[nt]); }
+  var ENDS = ['에서는', '으로는', '하려면', '에서', '에는', '으로', '에도', '까지', '부터', '입니다', '인가요', '나요', '하는', '하기', '해야', '할때', '을', '를', '은', '는', '이', '가', '에', '로', '의', '와', '과', '도', '만', '용', '할', '한', '된'];
+  function stripEnd(nt) {
+    if (known(nt)) return nt;
+    for (var i = 0; i < ENDS.length; i++) {
+      var e = ENDS[i];
+      if (nt.length - e.length >= 2 && nt.slice(-e.length) === e) return nt.slice(0, -e.length);
+    }
+    return nt;
+  }
+  function correct(nt) {
+    var j = jamo(nt), L = j.length, max = L <= 3 ? 0 : (L <= 7 ? 1 : 2);
+    if (!max) return null;
+    var best = null;
+    Object.keys(vocab).forEach(function (w) {
+      var v = vocab[w], dd = osa(j, v.j, max);
+      if (dd > max) return;
+      if (!best || dd < best.d || (dd === best.d && v.pri > best.pri)) best = { d: dd, pri: v.pri, term: w, label: (termGroup[w] ? SAME[termGroup[w][0]][0] : v.raw) };
+    });
+    return best;
+  }
+  function expandCho(c) {
+    var exact = [], pre = [];
+    Object.keys(vocab).forEach(function (w) {
+      var cw = choOf(w);
+      if (cw === c) exact.push(w); else if (cw.indexOf(c) === 0) pre.push(w);
+    });
+    var list = exact.length ? exact : pre;
+    var strong = list.filter(function (w) { return vocab[w].pri >= 3; });
+    if (strong.length) list = strong;
+    list.sort(function (a, b) { return vocab[b].pri - vocab[a].pri; });
+    return list.slice(0, 8);
+  }
+  function segment(nt) {
+    var n = nt.length, dp = [[]];
+    for (var i = 1; i <= n; i++) {
+      dp[i] = null;
+      for (var j = 0; j < i; j++) {
+        if (dp[j] === null) continue;
+        var w = nt.slice(j, i);
+        if (w.length >= 2 && (vocab[w] || genericSet[w]) && (dp[i] === null || dp[j].length + 1 < dp[i].length)) dp[i] = dp[j].concat([w]);
+      }
+    }
+    return dp[n];
+  }
+  function mergeCodes(parts) {
+    var out = [], i = 0;
+    while (i < parts.length) {
+      var merged = false;
+      for (var len = Math.min(4, parts.length - i); len >= 2; len--) {
+        var j = norm(parts.slice(i, i + len).join(''));
+        if (j.length >= 4 && aliasAll.some(function (a) { return a.indexOf(j) >= 0; })) { out.push(parts.slice(i, i + len).join(' ')); i += len; merged = true; break; }
+      }
+      if (!merged) { out.push(parts[i]); i++; }
+    }
+    return out;
+  }
+  function analyze(q) {
+    var parts = mergeCodes(String(q).split(/[\s,，、/·]+/).filter(Boolean));
+    var toks = [], notes = [];
+    function push(raw, nt, terms, extra) {
+      var tk = { raw: raw, nt: nt, role: isContext(nt) ? 'context' : 'core', terms: terms };
+      if (extra) for (var k in extra) tk[k] = extra[k];
+      toks.push(tk);
+    }
+    function add(p, depth) {
+      var nt = norm(p);
+      if (!nt) return;
+      if (genericSet[nt]) { toks.push({ raw: p, nt: nt, role: 'generic', terms: [{ t: nt, w: 1, kind: 'self', label: p }] }); return; }
+      if (/^[\u3131-\u314e]+$/.test(nt)) {
+        if (nt.length >= 2) {
+          var ex = expandCho(nt);
+          if (ex.length) { push(p, nt, ex.map(function (w) { return { t: w, w: .9, kind: 'cho', label: vocab[w].raw }; }), { note: '초성 ‘' + p + '’ → ' + ex.slice(0, 4).map(function (w) { return vocab[w].raw; }).join(', ') }); return; }
+        }
+        notes.push({ unknown: p }); return;
+      }
+      var single = nt.length === 1 && !termGroup[nt];
+      var terms = single ? [{ t: nt, w: 1, kind: 'self', label: p, prefix: true }] : termsFor(nt, p);
+      if (hitsAny(terms)) { push(p, nt, terms); return; }
+      var s = stripEnd(nt);
+      if (s !== nt) {
+        if (genericSet[s]) { toks.push({ raw: p, nt: s, role: 'generic', terms: [{ t: s, w: 1, kind: 'self', label: p }] }); return; }
+        terms = termsFor(s, p);
+        if (hitsAny(terms)) { push(p, s, terms); return; }
+        nt = s;
+      }
+      var c = correct(nt);
+      if (c) {
+        terms = termsFor(c.term, p, 'corrected');
+        if (hitsAny(terms)) { push(p, c.term, terms, { note: '‘' + p + '’ → ‘' + c.label + '’(으)로 찾았어요' }); return; }
+      }
+      if (!depth) {
+        var seg = segment(nt);
+        if (seg && seg.length > 1) { seg.forEach(function (sp) { add(sp, 1); }); return; }
+      }
+      notes.push({ unknown: p });
+    }
+    parts.forEach(function (p) { add(p, 0); });
+    return { toks: toks, notes: notes };
+  }
+
+  /* ===== 5. 검색 · 순위 ===== */
+  function search(q) {
+    ensureIndex();
+    var an = analyze(q), toks = an.toks;
+    var core = toks.filter(function (t) { return t.role === 'core'; });
+    var ctx = toks.filter(function (t) { return t.role === 'context'; });
+    var gen = toks.filter(function (t) { return t.role === 'generic'; });
+    var required = core.length ? core : (ctx.length ? ctx : gen);
+    var fullN = norm(q), rows = [];
+    docs.forEach(function (doc) {
+      var hits = toks.map(function (t) { return bestFor(doc, t); });
+      var req = required.map(function (t) { return hits[toks.indexOf(t)]; });
+      var nReq = req.filter(Boolean).length;
+      if (!nReq) return;
+      var score = 0;
+      hits.forEach(function (h, i) { if (h) score += h.v * ({ core: 1, context: .6, generic: .15 })[toks[i].role]; });
+      if (fullN.length >= 4) {
+        var all = doc.names.concat(doc.uses, doc.tags, doc.body);
+        if (all.some(function (x) { return x.n.indexOf(fullN) >= 0; })) score += 40;
+      }
+      rows.push({ doc: doc, hits: hits, score: score + nReq * 20, full: nReq === required.length });
+    });
+    var full = rows.filter(function (r) { return r.full; }), partial = false;
+    if (full.length >= 3) rows = full;
+    else if (rows.length) { partial = true; rows.forEach(function (r) { r.score += r.full ? 1000 : 0; }); }
+    rows.sort(function (a, b) { return (b.score - a.score) || (a.doc.order - b.doc.order); });
+    partial = rows.some(function (r) { return !r.full; });
+    return { an: an, rows: rows, partial: partial, toks: toks };
+  }
+
+  /* ===== 6. 화면 ===== */
+  function thumbFor(d) {
+    var p = d.p, code = d.code, src = '';
+    src = safe(function () { return PRODUCT_THUMBS[code]; }, '') || safe(function () { return PRODUCT_IMAGES[code]; }, '') || (p && p.titleImg) || safe(function () { return PRODUCT_DOCS[code][0]; }, '');
+    return src;
+  }
+  var shown = {};
+  function resetShown() { shown = {}; GROUPS.forEach(function (g) { shown[g.k] = g.n; }); }
+  resetShown();
+  function reasonHtml(row, toks) {
+    var pieces = [], miss = [], isProd = row.doc.type === 'prod';
+    var KIND = isProd ? { name: '제품명', use: '용도', tag: '분류·특징', body: '상세' } : { name: '제목', use: '추천 대상', tag: '항목', body: '내용' };
+    toks.forEach(function (t, i) {
+      var h = row.hits[i];
+      if (t.role === 'generic') return;
+      if (!h) { miss.push(t.raw); return; }
+      var hlTerms = [h.term.t, t.nt];
+      var s = '<span class="ok">✓</span><b>' + esc(t.raw) + '</b> · ' + KIND[h.kind] + ' ‘' + snippet(h.item.raw, hlTerms, 50) + '’';
+      if (h.item.src && h.kind !== 'name') s += ' <span class="src">(' + esc(h.item.src) + ')</span>';
+      if (h.term.kind === 'related') s += ' <span class="rel">관련 검색어 → ' + esc(h.term.label) + '</span>';
+      else if (h.term.kind === 'same' && h.term.t !== t.nt) s += ' <span class="src">(‘' + esc(h.term.label) + '’와 같은 말)</span>';
+      pieces.push({ s: s, v: h.v });
+    });
+    pieces.sort(function (a, b) { return b.v - a.v; });
+    var html = pieces.slice(0, 2).map(function (p) { return '<div class="srch-why">' + p.s + '</div>'; }).join('');
+    if (miss.length) html += '<div class="srch-miss"><span class="no">✕</span> ' + miss.map(esc).join(', ') + ' — 이 항목에는 언급 없음</div>';
+    return html;
+  }
+  function itemHtml(row, toks, idx) {
+    var d = row.doc, T = TYPE[d.type], hlt = [];
+    toks.forEach(function (t, i) { if (row.hits[i] && row.hits[i].kind === 'name' && t.role !== 'generic') hlt.push(row.hits[i].term.t, t.nt); });
+    var thumb;
+    if (d.type === 'prod') {
+      var src = thumbFor(d);
+      thumb = '<span class="srch-thumb prodimg">' + (src ? '<img src="' + esc(src) + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">' : '<span class="srch-badge" style="--c:' + T.c + '">PAINT</span>') + '</span>';
+    } else if (d.type === 'guide' && d.img && d.img.getAttribute('src')) {
+      thumb = '<span class="srch-thumb"><img src="' + esc(d.img.getAttribute('src')) + '" alt="" loading="lazy"></span>';
+    } else thumb = '<span class="srch-thumb"><span class="srch-badge" style="--c:' + T.c + '">' + esc(T.b) + '</span></span>';
+    var sub = d.sub ? '<span class="srch-sub">' + esc(d.sub) + '</span>' : '';
+    return '<button type="button" class="srch-item" data-i="' + idx + '">' + thumb +
+      '<span class="srch-main"><span class="srch-name">' + hl(d.name, hlt) + '</span>' + sub +
+      '<span class="srch-step" style="--c:' + T.c + '">' + T.label + '</span>' + reasonHtml(row, toks) + '</span><span class="srch-go">›</span></button>';
+  }
+  var last = null;
+  function render(q) {
+    q = q.trim();
+    $clear.hidden = !q;
+    if (!q) { $out.innerHTML = ''; last = null; resetShown(); return; }
+    var r = search(q); last = r;
+    var notes = [];
+    r.toks.forEach(function (t) { if (t.note) notes.push(esc(t.note)); });
+    r.an.notes.forEach(function (n) { notes.push('‘' + esc(n.unknown) + '’ 관련 내용은 이 가이드에서 찾지 못해 제외하고 검색했어요'); });
+    if (!r.rows.length) {
+      var sug = [];
+      r.an.notes.forEach(function (n) { var c = correct(norm(n.unknown)); if (c) sug.push(c.label); });
+      $out.innerHTML = '<div class="srch-empty"><b>검색 결과가 없습니다.</b><br>다른 표현이나 제품명(예: 곰팡이, 프라이머, 에베레스트)으로 다시 찾아보세요.' +
+        (sug.length ? '<br>혹시 ' + sug.map(function (s) { return '<b>' + esc(s) + '</b>'; }).join(', ') + '을(를) 찾으셨나요?' : '') + '</div>';
+      return;
+    }
+    var h = '';
+    if (notes.length) h += '<div class="srch-note">' + notes.join('<br>') + '</div>';
+    if (r.partial) h += '<div class="srch-note"><b>안내</b> 입력한 단어를 모두 포함한 항목이 적어, 일부만 일치하는 항목도 함께 보여드려요. (일치하지 않은 단어는 ✕로 표시)</div>';
+    var parts = [], total = 0;
+    var ordered = GROUPS.map(function (g, gi) {
+      var rows = r.rows.filter(function (x) { return g.types.indexOf(x.doc.type) >= 0; });
+      return { g: g, rows: rows, top: rows.length ? rows[0].score : -1, gi: gi };
+    }).filter(function (x) { return x.rows.length; }).sort(function (a, b) { return (b.top - a.top) || (a.gi - b.gi); });
+    ordered.forEach(function (o) {
+      var g = o.g, rows = o.rows;
+      total += rows.length; parts.push(g.t + ' ' + rows.length);
+      h += '<div class="srch-secttl">' + g.t + '</div><div class="srch-list">' +
+        rows.slice(0, shown[g.k]).map(function (x) { return itemHtml(x, r.toks, r.rows.indexOf(x)); }).join('') + '</div>';
+      if (rows.length > shown[g.k]) h += '<button type="button" class="srch-more" data-more="' + g.k + '">' + g.t + ' ' + (rows.length - shown[g.k]) + '개 더 보기</button>';
+    });
+    $out.innerHTML = '<div class="srch-status">검색 결과 ' + total + '건 · ' + parts.join(' · ') + '</div>' + h;
+  }
+
+  /* ===== 7. 이동 ===== */
+  function flash(el) { if (!el) return; el.classList.remove('srch-flash'); void el.offsetWidth; el.classList.add('srch-flash'); setTimeout(function () { el.classList.remove('srch-flash'); }, 2100); }
+  function goProduct(code) {
+    var lb = document.getElementById('lineup-body');
+    if (lb && lb.hasAttribute('hidden')) {
+      lb.removeAttribute('hidden');
+      var tb = document.getElementById('lineup-toggle');
+      if (tb) { tb.setAttribute('aria-expanded', 'true'); var lbl = tb.querySelector('.lt-label'); if (lbl) lbl.textContent = '용도별 주요 제품 닫기'; }
+    }
+    var all = document.querySelector('#filters .chip[data-f="all"]');
+    if (all && !all.classList.contains('active')) all.click();
+    var el = document.getElementById('prod-' + code);
+    if (!el) return;
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    flash(el); el.classList.remove('sg-flash'); void el.offsetWidth; el.classList.add('sg-flash');
+    setTimeout(function () { el.classList.remove('sg-flash'); }, 1900);
+  }
+  function openDoc(d) {
+    if (d.type === 'prod') return goProduct(d.code);
+    if (d.type === 'space') {
+      var tab = document.querySelector('#sgTabs .sg-tab[data-scene="' + d.sceneKeys[0] + '"]');
+      if (tab && !tab.classList.contains('active')) tab.click();
+      var sec = document.getElementById('sgTabs'); if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(function () { var b = document.querySelector('#sgZoneList .zone-btn[data-id="' + d.id + '"]'); if (b) b.click(); }, 80);
+      return;
+    }
+    if (d.type === 'guide') { d.el.scrollIntoView({ behavior: 'smooth', block: 'center' }); d.el.click(); return; }
+    if (d.type === 'reco') {
+      var rs = document.getElementById('reco'); if (rs) rs.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (d.el) setTimeout(function () { d.el.click(); }, 80);
+      return;
+    }
+    if (d.type === 'tool') {
+      if (d.target === 'lineup') {
+        var lb = document.getElementById('lineup-body'), tb = document.getElementById('lineup-toggle');
+        if (lb && lb.hasAttribute('hidden') && tb) tb.click();
+      }
+      var tg = document.getElementById(d.target); if (tg) { tg.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      return;
+    }
+    if (d.type === 'faq') {
+      if (!d.el.classList.contains('open')) { var q = d.el.querySelector('.faq-q'); if (q) q.click(); }
+      d.el.scrollIntoView({ behavior: 'smooth', block: 'center' }); flash(d.el); return;
+    }
+    d.el.scrollIntoView({ behavior: 'smooth', block: 'center' }); flash(d.el);
+  }
+
+  /* ===== 8. 이벤트 ===== */
+  var timer = null;
+  $input.addEventListener('input', function () {
+    clearTimeout(timer); resetShown();
+    timer = setTimeout(function () { render($input.value); }, 90);
+  });
+  $input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+      e.preventDefault(); clearTimeout(timer); render($input.value);
+      var f = $out.querySelector('.srch-item'); if (f) f.click();
+    } else if (e.key === 'ArrowDown') {
+      var f2 = $out.querySelector('.srch-item'); if (f2) { e.preventDefault(); f2.focus(); }
+    } else if (e.key === 'Escape') { $input.value = ''; render(''); }
+  });
+  $clear.addEventListener('click', function () { $input.value = ''; render(''); $input.focus(); });
+  root.addEventListener('click', function (e) {
+    var chip = e.target.closest('.srch-chip');
+    if (chip) { $input.value = chip.getAttribute('data-q'); resetShown(); render($input.value); $out.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); return; }
+    var more = e.target.closest('.srch-more');
+    if (more) { shown[more.getAttribute('data-more')] += 20; render($input.value); return; }
+    var it = e.target.closest('.srch-item');
+    if (it && last) openDoc(last.rows[+it.getAttribute('data-i')].doc);
+  });
+  $out.addEventListener('keydown', function (e) {
+    var cur = document.activeElement;
+    if (!cur || !cur.classList.contains('srch-item')) return;
+    var all = [].slice.call($out.querySelectorAll('.srch-item')), i = all.indexOf(cur);
+    if (e.key === 'ArrowDown' && all[i + 1]) { e.preventDefault(); all[i + 1].focus(); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); (all[i - 1] || $input).focus(); }
+  });
+  buildIndex();
+  // 외부 데이터(JSON)로 제품이 교체되는 경우를 위해 한 번 더 확인
+  setTimeout(ensureIndex, 1500);
+  $input.addEventListener('focus', ensureIndex);
+  window.deSearch = { search: search, analyze: analyze, docs: docs };
+})();
+</script>
+
 </body>
 </html>
