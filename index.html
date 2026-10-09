@@ -693,6 +693,7 @@ tr.srch-flash td{animation:srchBg 2s ease-out}
           <button type="button" class="srch-chip" data-q="추운 날 시공">추운 날 시공</button>
           <button type="button" class="srch-chip" data-q="광택 선택">광택 선택</button>
           <button type="button" class="srch-chip" data-q="아연도금">아연도금</button>
+          <button type="button" class="srch-chip" data-q="바니시">바니시</button>
         </div>
       </div>
       <div class="srch-chip-row">
@@ -1780,6 +1781,16 @@ const PRODUCTS = [
    feats:["세라믹 미립자로 단열·차열 성능 부여","결로 방지 및 곰팡이 억제 효과","냉난방 에너지 비용 절감","기존 수성 도료에 첨가해 사용 (물 희석 없이 충분히 교반)","EG-FREE · 무독성 친환경 포뮬러","사용량: 도료에 혼합하는 첨가제로 별도 도포 면적 없음 — 혼합한 페인트의 도포량을 따름"],
    use:"결로·곰팡이 우려 벽면 · 베란다 · 지하 · 외벽 단열",
    sheens:["첨가제(도료에 혼합)"]},
+  // ULTRACLEAR (인터그레인 울트라클리어 익스테리어)
+  {cat:"trim", catLabel:"원목 · 목재",
+   name:"ULTRACLEAR 울트라클리어 익스테리어", code:"UCLR",homepage:"https://www.jeswood.com/shop/goods_detail.php?ps_uid=13915",
+   tier:"외부 목재 투명 마감제", tierClass:"pro",
+   type:"수성 투명 외부 목재 마감제 · 새틴/글로스",
+   titleImg:"img/de-ultraclear-thumb.webp",
+   desc:"인터그레인 울트라클리어 익스테리어는 외부 창틀·도어·트림 등 실외 목재에 사용하는 단단하고 투명한 해수(Marine) 등급 수성 목재 마감제입니다. 풍화와 자외선 차단에 탁월한 보호 기능을 제공하며, 오일 기반 코팅제처럼 황변이 일어나지 않습니다.",
+   feats:["실외 목재 문·창틀·트림용 투명 수성 마감제 (해수 Marine 등급)","풍화·자외선(UV) 차단 · 날씨 변화에 탁월한 보호","무황변 · 물 청소 가능 · 새틴 / 글로스 광도","브러쉬·어플리케이터·스프레이 시공 · 용량 1L / 4L","VOC 함유량 46g/L (국내 함유기준 180g/L 이하)","사용량: 약 10~12㎡/L(1L 기준, 표면 상태에 따라 차이) · 작업 환경에 따라 3회 이상 필요할 수 있음 (재도포 3시간)","희석: 원액 그대로 사용 권장 (희석 시 물 최대 5~10%)","주의: 보라색 UV 차단제 함유 — 흰색 페인트·스테인 위 작업 비권장, 반드시 테스트 후 사용","주의: 마찰이 많은 표면(데크·통로)에는 부적합 · 10℃ 이하·35℃ 이상·우천·직사광선·뜨거운 표면에서는 사용 비권장"],
+   use:"외부 문 · 창틀 · 트림 · 실외 목재 (외부 문·창틀 안쪽 포함)",
+   sheens:["새틴 / 글로스"]},
   // ULTRAFLOOR (인터그레인 울트라플로어 - SATIN)
   {cat:"trim", catLabel:"원목 · 목재",
    name:"ULTRAFLOOR 울트라플로어", code:"UFLR",homepage:"https://www.jeswood.com/shop/goods_detail.php?ps_uid=13917",
@@ -1913,7 +1924,7 @@ const FAQS = [
 
 /* ---------------- ASSETS ---------------- */
 const LOGO_SRC="img/asset-8d880f631d.webp";
-const PRODUCT_DOCS={"ULGM00":["img/asset-c7a94ee2a1.webp","img/asset-9714df39c2.webp"],"EXQT":["img/asset-2299a9fef2.webp","img/asset-4f7209eb92.webp","img/asset-b1793b6f82.webp","img/asset-8122182557.webp"],"UDST":["img/asset-01b42c28e2.webp","img/asset-67aa0ec63d.webp"],"EPXS":["img/asset-a4e3d54a67.webp"],"LOCK":["img/asset-b19a62da89.webp"],"UDECK":["img/asset-01b42c28e2.webp","img/asset-2b57d7c737.webp","img/asset-9ce5c407db.webp"],"ORIG":["img/asset-b655634ba3.webp"],"DAMP":["img/asset-e4747e295e.webp","img/asset-b30033d2eb.webp"],"EVER":["img/asset-0fa3bd975c.webp","img/asset-d0792e7018.webp","img/asset-5b159e66d9.webp","img/asset-0c41ce967b.webp"],
+const PRODUCT_DOCS={"UCLR":["img/de-ultraclear-doc1.webp","img/de-ultraclear-doc2.webp","img/de-ultraclear-doc3.webp","img/de-ultraclear-doc4.webp"],"ULGM00":["img/asset-c7a94ee2a1.webp","img/asset-9714df39c2.webp"],"EXQT":["img/asset-2299a9fef2.webp","img/asset-4f7209eb92.webp","img/asset-b1793b6f82.webp","img/asset-8122182557.webp"],"UDST":["img/asset-01b42c28e2.webp","img/asset-67aa0ec63d.webp"],"EPXS":["img/asset-a4e3d54a67.webp"],"LOCK":["img/asset-b19a62da89.webp"],"UDECK":["img/asset-01b42c28e2.webp","img/asset-2b57d7c737.webp","img/asset-9ce5c407db.webp"],"ORIG":["img/asset-b655634ba3.webp"],"DAMP":["img/asset-e4747e295e.webp","img/asset-b30033d2eb.webp"],"EVER":["img/asset-0fa3bd975c.webp","img/asset-d0792e7018.webp","img/asset-5b159e66d9.webp","img/asset-0c41ce967b.webp"],
 "SPMA30":["img/asset-b0e2abc5f1.webp","img/asset-5feddf49f5.webp","img/asset-6bf69c51b0.webp","img/asset-d91266283e.webp"],
 "SWLL":["img/asset-dda4558414.webp","img/asset-4b4061833f.webp","img/asset-2c88425fb3.webp","img/asset-8666dc4d5f.webp"],
 "EVSH":["img/asset-b72a74c5f8.webp","img/asset-b354ddbab1.webp","img/asset-76168d81af.webp","img/asset-fd9fc02dd0.webp"],
@@ -1926,9 +1937,10 @@ const PRODUCT_DOCS={"ULGM00":["img/asset-c7a94ee2a1.webp","img/asset-9714df39c2.
 "UGPR00":["img/asset-e435b4589a.webp","img/asset-bdf992ab81.webp"],
 "BRPR00":["img/asset-ef0acf2a5b.webp","img/asset-662d9266da.webp"],
 "ENCT":["img/asset-663fd63057.webp","img/asset-27951cc0c4.webp","img/asset-c04b923199.webp","img/asset-4f6f605036.webp","img/asset-b7caee1616.webp","img/asset-970985eb77.webp"]};
-const PRODUCT_THUMBS={"UDECK":"img/asset-e637607b47.webp","UFLR":"img/asset-4eb027d678.webp","MARM":"img/asset-d3291b0791.webp","INSU":"img/asset-1b91d95d48.webp","ORIG":"img/asset-0e56beebbc.webp","CSEAL":"img/asset-8619af17b1.webp","DAMP":"img/asset-3d673ffaec.webp","EVER":"img/asset-c741370ced.webp","SPMA30":"img/asset-32dcab33a3.webp","SWLL":"img/asset-5c9a66e5e0.webp","EVSH":"img/asset-a6201038b8.webp","ACBL10":"img/asset-2e1768db12.jpg","ASHL":"img/asset-2961468dbe.jpg","DGLO30":"img/asset-a48d0ef2bd.webp","VNPR00":"img/asset-1a31f77131.webp","BIPR00":"img/asset-b1e7b64f46.webp","DCPR00":"img/asset-811f9f1e2c.webp","UGPR00":"img/asset-b67d0e8c13.jpg","BRPR00":"img/asset-f3b2394463.webp","ENCT":"img/asset-43ab4081f0.webp"};
+const PRODUCT_THUMBS={"UCLR":"img/de-ultraclear-thumb.webp","UDECK":"img/asset-e637607b47.webp","UFLR":"img/asset-4eb027d678.webp","MARM":"img/asset-d3291b0791.webp","INSU":"img/asset-1b91d95d48.webp","ORIG":"img/asset-0e56beebbc.webp","CSEAL":"img/asset-8619af17b1.webp","DAMP":"img/asset-3d673ffaec.webp","EVER":"img/asset-c741370ced.webp","SPMA30":"img/asset-32dcab33a3.webp","SWLL":"img/asset-5c9a66e5e0.webp","EVSH":"img/asset-a6201038b8.webp","ACBL10":"img/asset-2e1768db12.jpg","ASHL":"img/asset-2961468dbe.jpg","DGLO30":"img/asset-a48d0ef2bd.webp","VNPR00":"img/asset-1a31f77131.webp","BIPR00":"img/asset-b1e7b64f46.webp","DCPR00":"img/asset-811f9f1e2c.webp","UGPR00":"img/asset-b67d0e8c13.jpg","BRPR00":"img/asset-f3b2394463.webp","ENCT":"img/asset-43ab4081f0.webp"};
 /* 제품 공식 캔 이미지 (우선 적용) — img/ 폴더에 아래 파일명으로 업로드 */
 const PRODUCT_IMAGES={
+  "UCLR":"img/de-ultraclear.png",
   "EVER":"img/de-everest.png",
   "SPMA30":"img/de-suprema.png",
   "SWLL":"img/de-spartawall.png",
@@ -2509,6 +2521,7 @@ dmStage.addEventListener('touchend',e=>{
     ['곰팡이살균', '살균', '몰드킬링', 'moldkilling'],
     ['라돈', 'radon'],
     ['녹', '녹슨', '녹슬', '방청', '녹방지', '부식', 'rust', 'antirust', 'corrosion'],
+    ['바니시', '바니쉬', '바니스', '니스', 'varnish'],
     ['에나멜', 'enamel'],
     ['알키드', 'alkyd'],
     ['우레탄', 'urethane'],
@@ -2599,6 +2612,8 @@ dmStage.addEventListener('touchend',e=>{
     { k: 'guide', t: '가이드 · 기준표', types: ['guide', 'primer', 'sheen', 'apply', 'tool'], n: 5 },
     { k: 'faq', t: '자주 묻는 질문', types: ['faq'], n: 3 }
   ];
+  // 담당자 지정: 바니시(투명 목재 마감)로 추천할 제품 — 제품 코드 대신 이름으로 연결(데이터가 외부 JSON으로 바뀌어도 유지)
+  var VARNISH = /ULTRAFLOOR|울트라\s*플로어|MASTERS\s*ARMOR(?!.*(?:파트|하드너))|마스터즈\s*아머(?!\s*파트)|ULTRA-?\s*CLEAR|울트라\s*클리어/i;
   var docs = [], vocab = {}, aliasAll = [], builtSig = '';
   function item(raw, src) { return { raw: raw, n: norm(raw), src: src || '' }; }
   function addVocab(word, pri) {
@@ -2671,6 +2686,7 @@ dmStage.addEventListener('touchend',e=>{
       Object.keys(al).forEach(function (a) { if (a.length >= 2) { d.names.push({ n: a, raw: p.name, src: '' }); aliasAll.push(a); addVocab(a, 4); } });
       split(p.use).forEach(function (u) { d.uses.push(item(u, '카드 주요 용도')); addWords(u, 2); });
       (usesByCode[p.code] || []).forEach(function (u) { d.uses.push(u); addWords(u.raw, 2); });
+      if (VARNISH.test(p.name) && !/파트\s*B|하드너/i.test(p.name)) { d.uses.push(item('바니시 (투명 목재 마감)', '지정 추천')); }
       [p.catLabel, p.tier].concat(split(p.type), p.sheens || []).forEach(function (t) { if (t) { d.tags.push(item(t, '카드')); addWords(t, 2); } });
       [p.desc].concat(p.feats || []).forEach(function (t) { if (t) { d.body.push(item(t, '카드')); addWords(t, 1); } });
       docs.push(d);
@@ -2767,7 +2783,16 @@ dmStage.addEventListener('touchend',e=>{
   function ensureIndex() { if (signature() !== builtSig) buildIndex(); }
 
   /* ===== 4. 매칭 ===== */
+  // 방수제로 오인될 수 있는 제품은 '방수' 계열 검색에서 제외 (제품명·다른 용도 검색에는 그대로 나옴)
+  var NOT_FOR = { INSU: ['방수'], CSEAL: ['방수'], EPXS: ['방수'], FLTX: ['방수'], EVSH: ['방수'], UCLR: ['데크', '백색'] };
+  function blocked(doc, t) {
+    var ex = doc.code && NOT_FOR[doc.code];
+    if (!ex) return false;
+    var gs = termGroup[t.t];
+    return !!gs && gs.some(function (gi) { return ex.indexOf(SAME[gi][0]) >= 0; });
+  }
   function scoreDoc(doc, t) {
+    if (blocked(doc, t)) return null;
     var best = null, i, it;
     function take(sc, kind, x) { if (!best || sc > best.score) best = { score: sc, kind: kind, item: x }; }
     for (i = 0; i < doc.names.length; i++) {
